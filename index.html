@@ -8,252 +8,276 @@
   <!-- Material 3 Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <!-- Material Symbols & Icons -->
+  <!-- Material Symbols -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="header">
-    <h1>Employee Referral Portal</h1>
+  <!-- Top App Bar -->
+  <header class="md-top-app-bar">
+    <h1 class="md-headline-medium">Employee Referral Portal</h1>
   </header>
 
-  <div class="container">
+  <!-- Main Container -->
+  <main class="md-container">
     <form 
       id="referralForm"
       action="https://script.google.com/macros/s/AKfycbxI2weUG9KobIY4dKHc5p8hcK8uddnR2Ii2bXWntW5LpNDLVb9_ygzLDD7X_UtiDt-L8w/exec"
       method="POST"
+      class="md-form"
     >
-      <!-- Personal Information Section -->
-      <section class="form-section">
-        <h2 class="section-title">
+      
+      <!-- Personal Information Card -->
+      <section class="md-card">
+        <div class="md-card-header">
           <span class="material-symbols-outlined">person</span>
-          Personal Information
-        </h2>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name <span class="required">*</span></label>
-            <input type="text" id="firstName" name="firstName" required />
-          </div>
-          
-          <div class="form-group">
-            <label for="middleName">Middle Name</label>
-            <input type="text" id="middleName" name="middleName" />
-          </div>
-          
-          <div class="form-group">
-            <label for="lastName">Last Name <span class="required">*</span></label>
-            <input type="text" id="lastName" name="lastName" required />
-          </div>
+          <h2 class="md-title-large">Personal Information</h2>
         </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="email">Email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" required />
+        
+        <div class="md-card-content">
+          <!-- Name Row -->
+          <div class="md-field-row">
+            <div class="md-text-field">
+              <label class="md-label">First Name <span class="md-required">*</span></label>
+              <input type="text" id="firstName" name="firstName" class="md-input" required />
+            </div>
+            
+            <div class="md-text-field">
+              <label class="md-label">Middle Name</label>
+              <input type="text" id="middleName" name="middleName" class="md-input" />
+            </div>
+            
+            <div class="md-text-field">
+              <label class="md-label">Last Name <span class="md-required">*</span></label>
+              <input type="text" id="lastName" name="lastName" class="md-input" required />
+            </div>
           </div>
-          
-          <div class="form-group">
-            <label for="phoneInput">Phone Number <span class="required">*</span></label>
-            <div class="phone-input">
-              <span class="country-code">+91</span>
+
+          <!-- Email & Phone Row -->
+          <div class="md-field-row">
+            <div class="md-text-field">
+              <label class="md-label">Email <span class="md-required">*</span></label>
+              <input type="email" id="email" name="email" class="md-input" required />
+            </div>
+            
+            <div class="md-text-field">
+              <label class="md-label">Phone Number <span class="md-required">*</span></label>
+              <div class="md-phone-input">
+                <span class="md-country-code">+91</span>
+                <input 
+                  type="tel" 
+                  id="phoneInput"
+                  placeholder="9876543210"
+                  pattern="[6-9][0-9]{9}"
+                  maxlength="10"
+                  class="md-input"
+                  required 
+                />
+              </div>
+              <small class="md-supporting-text">10-digit mobile number</small>
+            </div>
+          </div>
+
+          <!-- Location Requirement Alert -->
+          <div class="md-alert">
+            <span class="material-symbols-outlined">location_on</span>
+            <div class="md-alert-content">
+              <strong class="md-alert-title">Location Requirement</strong>
+              <p class="md-alert-text">Due to company policy, candidates must be currently located in India. If you are an Indian citizen working abroad, you must have at least 1-2 years of relevant experience in India after returning to be eligible for consideration.</p>
+            </div>
+          </div>
+
+          <!-- Postal Code & City Row -->
+          <div class="md-field-row">
+            <div class="md-text-field">
+              <label class="md-label">Postal Code <span class="md-required">*</span></label>
               <input 
-                type="tel" 
-                id="phoneInput"
-                placeholder="9876543210"
-                pattern="[6-9][0-9]{9}"
-                maxlength="10"
+                type="text" 
+                id="postalCode" 
+                name="postalCode" 
+                placeholder="560001"
+                pattern="[1-9][0-9]{5}"
+                maxlength="6"
+                class="md-input"
+                required 
+              />
+              <small id="postalHelp" class="md-supporting-text">Enter 6-digit PIN code</small>
+            </div>
+            
+            <div class="md-text-field">
+              <label class="md-label">City <span class="md-required">*</span></label>
+              <input 
+                type="text" 
+                id="city" 
+                name="city" 
+                readonly 
+                placeholder="Auto-filled from postal code"
+                class="md-input"
                 required 
               />
             </div>
-            <small class="help-text">10-digit mobile number</small>
-          </div>
-        </div>
-
-        <div class="info-note">
-          <span class="material-symbols-outlined">location_on</span>
-          <div>
-            <strong>Location Requirement</strong>
-            <p>Due to company policy, candidates must be currently located in India. If you are an Indian citizen working abroad, you must have at least 1-2 years of relevant experience in India after returning to be eligible for consideration.</p>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="postalCode">Postal Code <span class="required">*</span></label>
-            <input 
-              type="text" 
-              id="postalCode" 
-              name="postalCode" 
-              placeholder="560001"
-              pattern="[1-9][0-9]{5}"
-              maxlength="6"
-              required 
-            />
-            <small id="postalHelp" class="help-text">Enter 6-digit PIN code</small>
-          </div>
-          
-          <div class="form-group">
-            <label for="city">City <span class="required">*</span></label>
-            <input 
-              type="text" 
-              id="city" 
-              name="city" 
-              readonly 
-              placeholder="Auto-filled from postal code"
-              required 
-            />
           </div>
         </div>
       </section>
 
-      <!-- Professional Information Section -->
-      <section class="form-section">
-        <h2 class="section-title">
+      <!-- Professional Information Card -->
+      <section class="md-card">
+        <div class="md-card-header">
           <span class="material-symbols-outlined">work</span>
-          Professional Information
-        </h2>
-
-        <div class="info-note">
-          <span class="material-symbols-outlined">description</span>
-          <div>
-            <strong>Job Requirements</strong>
-            <p>Please carefully review the <a href="https://drive.google.com/drive/folders/1wwKzneVh8rRCRsAfzJm68GaGs9DBeGPL?usp=drive_link" target="_blank" rel="noopener">job descriptions and experience requirements</a> before selecting a role. You must meet the stated experience criteria. Requests made in the comments section will not be entertained.</p>
-          </div>
+          <h2 class="md-title-large">Professional Information</h2>
         </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="expYears">Total Relevant Experience <span class="required">*</span></label>
-            <div class="experience-input">
-              <select id="expYears" required>
-                <option value="">Years</option>
-              </select>
-              <select id="expMonths" required>
-                <option value="">Months</option>
-              </select>
+
+        <div class="md-card-content">
+          <!-- Job Requirements Alert -->
+          <div class="md-alert">
+            <span class="material-symbols-outlined">description</span>
+            <div class="md-alert-content">
+              <strong class="md-alert-title">Job Requirements</strong>
+              <p class="md-alert-text">Please carefully review the <a href="https://drive.google.com/drive/folders/1wwKzneVh8rRCRsAfzJm68GaGs9DBeGPL?usp=drive_link" target="_blank" rel="noopener">job descriptions and experience requirements</a> before selecting a role. You must meet the stated experience criteria. Requests made in the comments section will not be entertained.</p>
             </div>
-            <small id="expHelp" class="help-text">Select years and months</small>
           </div>
           
-          <div class="form-group">
-            <label for="role">Job Role <span class="required">*</span></label>
-            <select id="role" name="role" required disabled>
-              <option value="">Select experience first</option>
-            </select>
-            <small id="roleHelp" class="help-text"></small>
+          <!-- Experience & Role Row -->
+          <div class="md-field-row">
+            <div class="md-text-field">
+              <label class="md-label">Total Relevant Experience <span class="md-required">*</span></label>
+              <div class="md-experience-input">
+                <select id="expYears" class="md-select" required>
+                  <option value="">Years</option>
+                </select>
+                <select id="expMonths" class="md-select" required>
+                  <option value="">Months</option>
+                </select>
+              </div>
+              <small id="expHelp" class="md-supporting-text">Select years and months</small>
+            </div>
+            
+            <div class="md-text-field">
+              <label class="md-label">Job Role <span class="md-required">*</span></label>
+              <select id="role" name="role" class="md-select" required disabled>
+                <option value="">Select experience first</option>
+              </select>
+              <small id="roleHelp" class="md-supporting-text"></small>
+            </div>
           </div>
-        </div>
 
-        <div class="form-row">
-          <div class="form-group full-width">
-            <label for="linkedinUrl">LinkedIn Profile URL <span class="required">*</span></label>
+          <!-- LinkedIn URL -->
+          <div class="md-text-field md-full-width">
+            <label class="md-label">LinkedIn Profile URL <span class="md-required">*</span></label>
             <input 
               type="url" 
               id="linkedinUrl" 
               name="linkedinUrl" 
               placeholder="https://www.linkedin.com/in/your-profile"
+              class="md-input"
               required 
             />
-            <small id="linkedinHelp" class="help-text">Must be a valid LinkedIn profile URL</small>
+            <small id="linkedinHelp" class="md-supporting-text">Must be a valid LinkedIn profile URL</small>
           </div>
-        </div>
 
-        <div class="form-row">
-          <div class="form-group full-width">
-            <label for="resumeFile">Resume (PDF only) <span class="required">*</span></label>
+          <!-- Resume Upload -->
+          <div class="md-text-field md-full-width">
+            <label class="md-label">Resume (PDF only) <span class="md-required">*</span></label>
             <input 
               type="file" 
               id="resumeFile"
-              accept=".pdf" 
+              accept=".pdf"
+              class="md-file-input"
               required 
             />
-            <small class="help-text">Maximum file size: 10MB</small>
+            <small class="md-supporting-text">Maximum file size: 10MB</small>
           </div>
         </div>
       </section>
 
-      <!-- Employment Status Section -->
-      <section class="form-section">
-        <h2 class="section-title">
+      <!-- Employment Status Card -->
+      <section class="md-card">
+        <div class="md-card-header">
           <span class="material-symbols-outlined">badge</span>
-          Employment Status
-        </h2>
-        
-        <div class="form-group">
-          <label>Current Employment Status <span class="required">*</span></label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="employmentStatus" value="Employed (not serving notice)" required />
-              <span class="radio-text">Employed (not serving notice)</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="employmentStatus" value="Serving notice period" />
-              <span class="radio-text">Serving notice period</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="employmentStatus" value="Not currently employed" />
-              <span class="radio-text">Not currently employed</span>
-            </label>
-          </div>
+          <h2 class="md-title-large">Employment Status</h2>
         </div>
+        
+        <div class="md-card-content">
+          <!-- Current Employment Status -->
+          <div class="md-radio-group">
+            <label class="md-label">Current Employment Status <span class="md-required">*</span></label>
+            <div class="md-radio-options">
+              <label class="md-radio-item">
+                <input type="radio" name="employmentStatus" value="Employed (not serving notice)" required />
+                <span class="md-radio-label">Employed (not serving notice)</span>
+              </label>
+              <label class="md-radio-item">
+                <input type="radio" name="employmentStatus" value="Serving notice period" />
+                <span class="md-radio-label">Serving notice period</span>
+              </label>
+              <label class="md-radio-item">
+                <input type="radio" name="employmentStatus" value="Not currently employed" />
+                <span class="md-radio-label">Not currently employed</span>
+              </label>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label>Do you currently have an offer?</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="hasOffer" value="Yes" />
-              <span class="radio-text">Yes</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="hasOffer" value="No" />
-              <span class="radio-text">No</span>
-            </label>
+          <!-- Current Offer Status -->
+          <div class="md-radio-group">
+            <label class="md-label">Do you currently have an offer?</label>
+            <div class="md-radio-options">
+              <label class="md-radio-item">
+                <input type="radio" name="hasOffer" value="Yes" />
+                <span class="md-radio-label">Yes</span>
+              </label>
+              <label class="md-radio-item">
+                <input type="radio" name="hasOffer" value="No" />
+                <span class="md-radio-label">No</span>
+              </label>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Additional Information Section -->
-      <section class="form-section">
-        <h2 class="section-title">
+      <!-- Additional Information Card -->
+      <section class="md-card">
+        <div class="md-card-header">
           <span class="material-symbols-outlined">notes</span>
-          Additional Information
-        </h2>
+          <h2 class="md-title-large">Additional Information</h2>
+        </div>
         
-        <div class="form-group">
-          <label for="comments">Additional Comments / Notes</label>
-          <textarea 
-            id="comments" 
-            name="comments" 
-            rows="4" 
-            placeholder="Any additional information you'd like to share..."
-          ></textarea>
+        <div class="md-card-content">
+          <div class="md-text-field md-full-width">
+            <label class="md-label">Additional Comments / Notes</label>
+            <textarea 
+              id="comments" 
+              name="comments" 
+              rows="4" 
+              placeholder="Any additional information you'd like to share..."
+              class="md-textarea"
+            ></textarea>
+          </div>
         </div>
       </section>
 
       <!-- Message Display -->
-      <div id="message" class="message"></div>
+      <div id="message" class="md-message"></div>
 
       <!-- Submit Button -->
-      <button type="submit" class="btn-submit" id="submitBtn">
+      <button type="submit" class="md-filled-button" id="submitBtn">
         <span class="material-symbols-outlined">send</span>
-        Submit Referral
+        <span>Submit Referral</span>
       </button>
     </form>
-  </div>
+  </main>
 
-  <!-- Success Modal -->
-  <div id="successModal" class="modal">
-    <div class="modal-content">
-      <div class="checkmark">
+  <!-- Success Dialog -->
+  <div id="successModal" class="md-dialog-scrim">
+    <div class="md-dialog">
+      <div class="md-dialog-icon">
         <span class="material-symbols-outlined">check_circle</span>
       </div>
-      <h2>Referral Submitted Successfully!</h2>
-      <p>Thank you for your referral. Our team will review the submission and get in touch soon.</p>
-      <button onclick="closeModal()" class="btn-close">Close</button>
+      <h2 class="md-dialog-headline">Referral Submitted Successfully!</h2>
+      <p class="md-dialog-text">Thank you for your referral. Our team will review the submission and get in touch soon.</p>
+      <button onclick="closeModal()" class="md-filled-button">Close</button>
     </div>
   </div>
 
