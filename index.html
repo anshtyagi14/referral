@@ -17,19 +17,9 @@
   <div class="container">
     <form 
       id="referralForm"
-      target="hidden_iframe"
-      action="https://script.google.com/macros/s/AKfycbzyaDbiQAj1cKf2Dg9IUPIGMBoZOpB3aD9gHzr4Byr4vGvN9KqDpLmQqb8mMFROj2pzMA/exec"
+      action="https://script.google.com/macros/s/AKfycbxbT4_7l3Nwt0bIrHAo_kZQsY0JElJesFfYT0htg6CAF-6EMDg60VYMyssE2IhQnNEM-w/exec"
       method="POST"
-      enctype="application/x-www-form-urlencoded"
     >
-      <!-- Hidden fields for base64 data -->
-      <input type="hidden" name="resumeBase64" id="resumeBase64" />
-      <input type="hidden" name="resumeName" id="resumeName" />
-      <input type="hidden" name="resumeType" id="resumeType" />
-      <input type="hidden" name="fullName" id="fullName" />
-      <input type="hidden" name="experienceDisplay" id="experienceDisplay" />
-      <input type="hidden" name="phone" id="phoneHidden" />
-
       <!-- Personal Information Section -->
       <section class="form-section">
         <h2 class="section-title">Personal Information</h2>
@@ -237,9 +227,6 @@
       <button onclick="closeModal()" class="btn-close">Close</button>
     </div>
   </div>
-
-  <!-- Hidden iframe to bypass CORS -->
-  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <script src="script.js"></script>
 </body>
