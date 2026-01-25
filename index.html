@@ -4,24 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Employee Referral Portal - CyberArk</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@100&family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header class="header">
     <h1>Employee Referral Portal</h1>
   </header>
 
   <div class="container">
-    <form 
+    <form
       id="referralForm"
+      target="hidden_iframe"
       action="https://script.google.com/macros/s/AKfycbzyaDbiQAj1cKf2Dg9IUPIGMBoZOpB3aD9gHzr4Byr4vGvN9KqDpLmQqb8mMFROj2pzMA/exec"
       method="POST"
       enctype="application/x-www-form-urlencoded"
     >
-      <!-- Hidden fields for base64 data -->
+      <!-- Hidden fields -->
       <input type="hidden" name="resumeBase64" id="resumeBase64" />
       <input type="hidden" name="resumeName" id="resumeName" />
       <input type="hidden" name="resumeType" id="resumeType" />
@@ -29,94 +33,63 @@
       <input type="hidden" name="experienceDisplay" id="experienceDisplay" />
       <input type="hidden" name="phone" id="phoneHidden" />
 
-      <!-- Personal Information Section -->
+      <!-- Personal Information -->
       <section class="form-section">
         <h2 class="section-title">Personal Information</h2>
-        
+
         <div class="form-row">
           <div class="form-group">
-            <label for="firstName">First Name <span class="required">*</span></label>
-            <input type="text" id="firstName" name="firstName" required />
+            <label>First Name *</label>
+            <input type="text" id="firstName" required />
           </div>
-          
+
           <div class="form-group">
-            <label for="middleName">Middle Name</label>
-            <input type="text" id="middleName" name="middleName" />
+            <label>Middle Name</label>
+            <input type="text" id="middleName" />
           </div>
-          
+
           <div class="form-group">
-            <label for="lastName">Last Name <span class="required">*</span></label>
-            <input type="text" id="lastName" name="lastName" required />
+            <label>Last Name *</label>
+            <input type="text" id="lastName" required />
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="email">Email <span class="required">*</span></label>
-            <input type="email" id="email" name="email" required />
+            <label>Email *</label>
+            <input type="email" name="email" required />
           </div>
-          
+
           <div class="form-group">
-            <label for="phoneInput">Phone Number <span class="required">*</span></label>
+            <label>Phone *</label>
             <div class="phone-input">
               <span class="country-code">+91</span>
-              <input 
-                type="tel" 
-                id="phoneInput"
-                placeholder="9876543210"
-                pattern="[6-9][0-9]{9}"
-                maxlength="10"
-                required 
-              />
+              <input type="tel" id="phoneInput" pattern="[6-9][0-9]{9}" maxlength="10" required />
             </div>
-            <small class="help-text">10-digit mobile number</small>
           </div>
-        </div>
-
-        <div class="info-note">
-          <strong>📍 Location Requirement:</strong> Due to company policy, candidates must be currently located in India. If you are an Indian citizen working abroad, you must have at least 1-2 years of relevant experience in India after returning to be eligible for consideration.
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="postalCode">Postal Code <span class="required">*</span></label>
-            <input 
-              type="text" 
-              id="postalCode" 
-              name="postalCode" 
-              placeholder="560001"
-              pattern="[1-9][0-9]{5}"
-              maxlength="6"
-              required 
-            />
-            <small id="postalHelp" class="help-text">Enter 6-digit PIN code</small>
+            <label>Postal Code *</label>
+            <input type="text" id="postalCode" name="postalCode" maxlength="6" required />
+            <small id="postalHelp" class="help-text"></small>
           </div>
-          
+
           <div class="form-group">
-            <label for="city">City <span class="required">*</span></label>
-            <input 
-              type="text" 
-              id="city" 
-              name="city" 
-              readonly 
-              placeholder="Auto-filled from postal code"
-              required 
-            />
+            <label>City *</label>
+            <input type="text" id="city" name="city" readonly required />
           </div>
         </div>
       </section>
 
-      <!-- Professional Information Section -->
+      <!-- Professional Info -->
       <section class="form-section">
         <h2 class="section-title">Professional Information</h2>
 
-        <div class="info-note">
-          <strong>📄 Job Requirements:</strong> Please carefully review the <a href="https://drive.google.com/drive/folders/1wwKzneVh8rRCRsAfzJm68GaGs9DBeGPL?usp=drive_link" target="_blank" rel="noopener">job descriptions and experience requirements</a> before selecting a role. You must meet the stated experience criteria. Requests made in the comments section will not be entertained.
-        </div>
-        
         <div class="form-row">
           <div class="form-group">
-            <label for="expYears">Total Relevant Experience <span class="required">*</span></label>
+            <label>Experience *</label>
             <div class="experience-input">
               <select id="expYears" required>
                 <option value="">Years</option>
@@ -125,105 +98,48 @@
                 <option value="">Months</option>
               </select>
             </div>
-            <small id="expHelp" class="help-text">Select years and months</small>
           </div>
-          
+
           <div class="form-group">
-            <label for="role">Job Role <span class="required">*</span></label>
-            <select id="role" name="role" required disabled>
+            <label>Job Role *</label>
+            <select id="role" name="role" disabled required>
               <option value="">Select experience first</option>
             </select>
             <small id="roleHelp" class="help-text"></small>
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group full-width">
-            <label for="linkedinUrl">LinkedIn Profile URL <span class="required">*</span></label>
-            <input 
-              type="url" 
-              id="linkedinUrl" 
-              name="linkedinUrl" 
-              placeholder="https://www.linkedin.com/in/your-profile"
-              required 
-            />
-            <small id="linkedinHelp" class="help-text">Must be a valid LinkedIn profile URL</small>
-          </div>
+        <div class="form-group full-width">
+          <label>LinkedIn *</label>
+          <input type="url" id="linkedinUrl" name="linkedinUrl" required />
+          <small id="linkedinHelp" class="help-text"></small>
         </div>
 
-        <div class="form-row">
-          <div class="form-group full-width">
-            <label for="resumeFile">Resume (PDF only) <span class="required">*</span></label>
-            <input 
-              type="file" 
-              id="resumeFile"
-              accept=".pdf" 
-              required 
-            />
-            <small class="help-text">Maximum file size: 10MB</small>
-          </div>
+        <div class="form-group full-width">
+          <label>Resume (PDF only) *</label>
+          <input type="file" id="resumeFile" accept=".pdf" required />
         </div>
       </section>
 
-      <!-- Employment Status Section -->
+      <!-- Employment -->
       <section class="form-section">
         <h2 class="section-title">Employment Status</h2>
-        
-        <div class="form-group">
-          <label>Current Employment Status <span class="required">*</span></label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="employmentStatus" value="Employed (not serving notice)" required />
-              <span>Employed (not serving notice)</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="employmentStatus" value="Serving notice period" />
-              <span>Serving notice period</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="employmentStatus" value="Not currently employed" />
-              <span>Not currently employed</span>
-            </label>
-          </div>
-        </div>
 
-        <div class="form-group">
-          <label>Do you currently have an offer?</label>
-          <div class="radio-group">
-            <label class="radio-label">
-              <input type="radio" name="hasOffer" value="Yes" />
-              <span>Yes</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="hasOffer" value="No" />
-              <span>No</span>
-            </label>
-          </div>
-        </div>
+        <label>
+          <input type="radio" name="employmentStatus" value="Employed" required /> Employed
+        </label>
+        <label>
+          <input type="radio" name="employmentStatus" value="Serving Notice" /> Serving Notice
+        </label>
+        <label>
+          <input type="radio" name="employmentStatus" value="Unemployed" /> Unemployed
+        </label>
       </section>
 
-      <!-- Additional Information Section -->
-      <section class="form-section">
-        <h2 class="section-title">Additional Information</h2>
-        
-        <div class="form-group">
-          <label for="comments">Additional Comments / Notes</label>
-          <textarea 
-            id="comments" 
-            name="comments" 
-            rows="4" 
-            placeholder="Any additional information you'd like to share..."
-          ></textarea>
-        </div>
-      </section>
-
-      <!-- Message Display -->
+      <!-- Message -->
       <div id="message" class="message"></div>
 
-      <!-- Submit Button -->
-      <button type="submit" class="btn-submit" id="submitBtn">
-        Submit Referral
-      </button>
+      <button type="submit" id="submitBtn" class="btn-submit">Submit Referral</button>
     </form>
   </div>
 
@@ -231,11 +147,13 @@
   <div id="successModal" class="modal">
     <div class="modal-content">
       <div class="checkmark">✅</div>
-      <h2>Referral Submitted Successfully!</h2>
-      <p>Thank you for your referral. Our team will review the submission and get in touch soon.</p>
+      <h2>Referral Submitted!</h2>
       <button onclick="closeModal()" class="btn-close">Close</button>
     </div>
   </div>
+
+  <!-- Hidden iframe (CORS FIX) -->
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
 
   <script src="script.js"></script>
 </body>
