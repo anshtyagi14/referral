@@ -200,29 +200,49 @@ async function handleSubmit(e) {
     showMessage("Encoding resume...", "info");
     const base64 = await fileToBase64(resumeFile);
 
-    document.getElementById("fullName").value = fullName;
-    document.getElementById("experienceDisplay").value = experienceDisplay;
-    document.getElementById("phoneHidden").value = phone;
-    document.getElementById("resumeBase64").value = base64;
-    document.getElementById("resumeName").value = resumeFile.name;
-    document.getElementById("resumeType").value = resumeFile.type;
-
     const hasOffer = document.querySelector('input[name="hasOffer"]:checked');
-    if (!hasOffer) {
-      const noOfferInput = document.createElement('input');
-      noOfferInput.type = 'hidden';
-      noOfferInput.name = 'hasOffer';
-      noOfferInput.value = 'Not specified';
-      form.appendChild(noOfferInput);
-    }
+    const offerValue = hasOffer ? hasOffer.value : 'Not specified';
+
+    const employmentStatus = document.querySelector('input[name="employmentStatus"]:checked').value;
+    const email = document.getElementById("email").value.trim();
+    const city = cityInput.value.trim();
+    const postalCode = postalCodeInput.value.trim();
+    const role = roleSelect.value;
+    const linkedinUrl = linkedinInput.value.trim();
+    const comments = document.getElementById("comments").value.trim() || "N/A";
+
+    // Prepare data as URL-encoded string
+    const formData = new URLSearchParams({
+      fullName: fullName,
+      email: email,
+      phone: phone,
+      city: city,
+      postalCode: postalCode,
+      experienceDisplay: experienceDisplay,
+      role: role,
+      linkedinUrl: linkedinUrl,
+      employmentStatus: employmentStatus,
+      hasOffer: offerValue,
+      comments: comments,
+      resumeBase64: base64,
+      resumeName: resumeFile.name,
+      resumeType: resumeFile.type
+    });
 
     showMessage("Submitting referral...", "info");
 
-    // Native form submit (bypasses CORS)
-    form.submit();
+    // Use fetch with text/plain to bypass CORS preflight
+    const response = await fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8'
+      },
+      body: formData.toString()
+    });
 
-    // Show success modal after delay (gives time for submission)
-    setTimeout(() => {
+    const result = await response.json();
+
+    if (result.success) {
       successModal.style.display = 'block';
       form.reset();
       cityInput.value = "";
@@ -234,12 +254,14 @@ async function handleSubmit(e) {
       postalHelp.textContent = "Enter 6-digit PIN code";
       postalHelp.className = "help-text";
       messageDiv.style.display = 'none';
-      submitBtn.disabled = false;
-    }, 1500);
+    } else {
+      showMessage("Submission failed: " + result.message, "error");
+    }
 
   } catch (err) {
     console.error("Submission error:", err);
     showMessage("An error occurred. Please try again.", "error");
+  } finally {
     submitBtn.disabled = false;
   }
 }
