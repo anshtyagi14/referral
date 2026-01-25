@@ -1,5 +1,5 @@
 /* ===================================
-   Material Design 3 Expressive Theme
+   Material Design 3 Web - Strict Compliance
    Employee Referral Portal - CyberArk
    =================================== */
 
@@ -10,90 +10,86 @@
 }
 
 :root {
-  /* Material 3 Color Palette - Dark Theme */
-  --md-primary: #A8C7FA;
-  --md-on-primary: #0A2E5C;
-  --md-primary-container: #1E4B8A;
-  --md-on-primary-container: #D4E3FF;
+  /* Material 3 Color Tokens - Dark Scheme */
+  --md-sys-color-primary: #A8C7FA;
+  --md-sys-color-on-primary: #0A2E5C;
+  --md-sys-color-primary-container: #1E4B8A;
+  --md-sys-color-on-primary-container: #D4E3FF;
   
-  --md-secondary: #B8C8DA;
-  --md-on-secondary: #23323F;
-  --md-secondary-container: #394857;
-  --md-on-secondary-container: #D4E3F6;
+  --md-sys-color-secondary: #B8C8DA;
+  --md-sys-color-on-secondary: #23323F;
+  --md-sys-color-secondary-container: #394857;
+  --md-sys-color-on-secondary-container: #D4E3F6;
   
-  --md-tertiary: #D3BDE6;
-  --md-on-tertiary: #392A49;
-  --md-tertiary-container: #504061;
-  --md-on-tertiary-container: #F0DBFF;
+  --md-sys-color-tertiary: #D3BDE6;
+  --md-sys-color-on-tertiary: #392A49;
+  --md-sys-color-tertiary-container: #504061;
+  --md-sys-color-on-tertiary-container: #F0DBFF;
   
-  --md-error: #FFB4AB;
-  --md-on-error: #690005;
-  --md-error-container: #93000A;
-  --md-on-error-container: #FFDAD6;
+  --md-sys-color-error: #FFB4AB;
+  --md-sys-color-on-error: #690005;
+  --md-sys-color-error-container: #93000A;
+  --md-sys-color-on-error-container: #FFDAD6;
   
-  --md-success: #7FDB8F;
-  --md-on-success: #003910;
-  --md-success-container: #005319;
-  --md-on-success-container: #9DF7A9;
+  --md-sys-color-success: #7FDB8F;
+  --md-sys-color-on-success: #003910;
+  --md-sys-color-success-container: #005319;
+  --md-sys-color-on-success-container: #9DF7A9;
   
-  --md-background: #1A1C1E;
-  --md-on-background: #E2E2E6;
-  --md-surface: #1A1C1E;
-  --md-on-surface: #E2E2E6;
+  --md-sys-color-background: #1A1C1E;
+  --md-sys-color-on-background: #E2E2E6;
+  --md-sys-color-surface: #1A1C1E;
+  --md-sys-color-on-surface: #E2E2E6;
+  --md-sys-color-surface-variant: #42474E;
+  --md-sys-color-on-surface-variant: #C2C7CF;
   
-  --md-surface-variant: #42474E;
-  --md-on-surface-variant: #C2C7CF;
-  --md-outline: #8C9199;
-  --md-outline-variant: #42474E;
+  --md-sys-color-outline: #8C9199;
+  --md-sys-color-outline-variant: #42474E;
   
-  --md-surface-container-lowest: #0F1113;
-  --md-surface-container-low: #1A1C1E;
-  --md-surface-container: #1E2022;
-  --md-surface-container-high: #282A2D;
-  --md-surface-container-highest: #333538;
+  --md-sys-color-surface-container-lowest: #0F1113;
+  --md-sys-color-surface-container-low: #1A1C1E;
+  --md-sys-color-surface-container: #1E2022;
+  --md-sys-color-surface-container-high: #282A2D;
+  --md-sys-color-surface-container-highest: #333538;
   
-  /* Elevation & Shadow */
-  --md-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
-  --md-elevation-2: 0 1px 2px rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
-  --md-elevation-3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.3);
-  --md-elevation-4: 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.3);
-  
-  /* State Layers */
-  --md-state-hover-opacity: 0.08;
-  --md-state-focus-opacity: 0.12;
-  --md-state-pressed-opacity: 0.12;
+  /* Elevation */
+  --md-sys-elevation-level0: none;
+  --md-sys-elevation-level1: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-level2: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --md-sys-elevation-level3: 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-level4: 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+  --md-sys-elevation-level5: 0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.3);
   
   /* Shape */
-  --md-shape-xs: 8px;
-  --md-shape-sm: 12px;
-  --md-shape-md: 16px;
-  --md-shape-lg: 20px;
-  --md-shape-xl: 28px;
-  
-  /* Spacing - Consistent 8px grid */
-  --spacing-2: 2px;
-  --spacing-4: 4px;
-  --spacing-8: 8px;
-  --spacing-12: 12px;
-  --spacing-16: 16px;
-  --spacing-20: 20px;
-  --spacing-24: 24px;
-  --spacing-32: 32px;
-  --spacing-40: 40px;
-  --spacing-48: 48px;
+  --md-sys-shape-corner-none: 0;
+  --md-sys-shape-corner-extra-small: 4px;
+  --md-sys-shape-corner-small: 8px;
+  --md-sys-shape-corner-medium: 12px;
+  --md-sys-shape-corner-large: 16px;
+  --md-sys-shape-corner-extra-large: 28px;
   
   /* Typography Scale */
-  --font-size-xs: 12px;
-  --font-size-sm: 14px;
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-size-xl: 20px;
-  --font-size-2xl: 24px;
-  --font-size-3xl: 28px;
+  --md-sys-typescale-display-large-size: 57px;
+  --md-sys-typescale-display-medium-size: 45px;
+  --md-sys-typescale-display-small-size: 36px;
+  --md-sys-typescale-headline-large-size: 32px;
+  --md-sys-typescale-headline-medium-size: 28px;
+  --md-sys-typescale-headline-small-size: 24px;
+  --md-sys-typescale-title-large-size: 22px;
+  --md-sys-typescale-title-medium-size: 16px;
+  --md-sys-typescale-title-small-size: 14px;
+  --md-sys-typescale-label-large-size: 14px;
+  --md-sys-typescale-label-medium-size: 12px;
+  --md-sys-typescale-label-small-size: 11px;
+  --md-sys-typescale-body-large-size: 16px;
+  --md-sys-typescale-body-medium-size: 14px;
+  --md-sys-typescale-body-small-size: 12px;
   
-  /* Font Families */
-  --md-font-brand: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-  --md-font-mono: 'Roboto Mono', 'Courier New', monospace;
+  /* State Layers */
+  --md-sys-state-hover-opacity: 0.08;
+  --md-sys-state-focus-opacity: 0.12;
+  --md-sys-state-pressed-opacity: 0.12;
+  --md-sys-state-dragged-opacity: 0.16;
 }
 
 /* ===================================
@@ -101,178 +97,166 @@
    =================================== */
 
 body {
-  font-family: var(--md-font-brand);
-  font-size: var(--font-size-base);
-  background: var(--md-background);
-  color: var(--md-on-background);
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: 400;
   line-height: 1.5;
+  letter-spacing: 0.5px;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ===================================
-   Material Icons Configuration
-   =================================== */
-
+/* Material Icons */
 .material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   vertical-align: middle;
   user-select: none;
 }
 
 /* ===================================
-   Header - Material 3 Surface
+   Top App Bar (Header)
    =================================== */
 
 .header {
-  background: linear-gradient(135deg, var(--md-primary-container) 0%, #0D3A6F 100%);
-  color: var(--md-on-primary-container);
-  padding: var(--spacing-24) var(--spacing-16);
-  text-align: center;
-  box-shadow: var(--md-elevation-2);
-  position: relative;
-}
-
-.header::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
-  pointer-events: none;
+  background: linear-gradient(135deg, var(--md-sys-color-primary-container) 0%, #0D3A6F 100%);
+  color: var(--md-sys-color-on-primary-container);
+  padding: 20px 16px;
+  box-shadow: var(--md-sys-elevation-level2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .header h1 {
-  font-size: var(--font-size-3xl);
-  font-weight: 500;
-  letter-spacing: 0.25px;
+  font-size: var(--md-sys-typescale-headline-medium-size);
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 0;
   margin: 0;
-  position: relative;
-  z-index: 1;
-  color: var(--md-on-primary-container);
+  text-align: center;
 }
 
 /* ===================================
-   Container - Material Surface
+   Container
    =================================== */
 
 .container {
-  max-width: 1100px;
-  margin: var(--spacing-32) auto;
-  background: var(--md-surface-container);
-  box-shadow: var(--md-elevation-2);
-  border-radius: var(--md-shape-xl);
+  max-width: 1200px;
+  margin: 24px auto;
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  box-shadow: var(--md-sys-elevation-level2);
   overflow: hidden;
 }
 
 /* ===================================
-   Form Layout
+   Form
    =================================== */
 
 form {
-  padding: var(--spacing-32) var(--spacing-24);
-}
-
-.form-section {
-  margin-bottom: var(--spacing-32);
-  padding: var(--spacing-24);
-  background: var(--md-surface-container-high);
-  border-radius: var(--md-shape-lg);
-  box-shadow: var(--md-elevation-1);
-  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-section:hover {
-  box-shadow: var(--md-elevation-2);
-}
-
-.form-section:last-of-type {
-  margin-bottom: var(--spacing-24);
-}
-
-.section-title {
-  font-size: var(--font-size-xl);
-  font-weight: 500;
-  color: var(--md-primary);
-  margin-bottom: var(--spacing-24);
-  padding-bottom: var(--spacing-16);
-  border-bottom: 2px solid var(--md-outline-variant);
-  letter-spacing: 0.15px;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-12);
-}
-
-.section-title .material-symbols-outlined {
-  font-size: 28px;
-  color: var(--md-primary);
+  padding: 24px;
 }
 
 /* ===================================
-   Info Note - Material 3 Container
+   Form Section (Card)
+   =================================== */
+
+.form-section {
+  background-color: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--md-sys-elevation-level1);
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-section:hover {
+  box-shadow: var(--md-sys-elevation-level2);
+}
+
+.form-section:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Section Title */
+.section-title {
+  font-size: var(--md-sys-typescale-title-large-size);
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0;
+  color: var(--md-sys-color-primary);
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--md-sys-color-outline-variant);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title .material-symbols-outlined {
+  font-size: 24px;
+  color: var(--md-sys-color-primary);
+}
+
+/* ===================================
+   Info Cards (Alerts)
    =================================== */
 
 .info-note {
-  background: var(--md-primary-container);
-  border-left: 4px solid var(--md-primary);
-  padding: var(--spacing-16) var(--spacing-20);
-  margin-bottom: var(--spacing-24);
-  border-radius: var(--md-shape-md);
-  font-size: var(--font-size-sm);
-  line-height: 1.6;
-  color: var(--md-on-primary-container);
-  box-shadow: var(--md-elevation-1);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  border-radius: var(--md-sys-shape-corner-medium);
+  padding: 16px;
+  margin-bottom: 20px;
   display: flex;
-  gap: var(--spacing-12);
+  gap: 12px;
   align-items: flex-start;
+  border-left: 4px solid var(--md-sys-color-primary);
 }
 
 .info-note .material-symbols-outlined {
   font-size: 24px;
-  color: var(--md-primary);
+  color: var(--md-sys-color-primary);
   flex-shrink: 0;
   margin-top: 2px;
 }
 
 .info-note strong {
   display: block;
-  margin-bottom: var(--spacing-8);
-  color: var(--md-primary);
-  font-weight: 600;
-  font-size: var(--font-size-base);
+  font-size: var(--md-sys-typescale-title-medium-size);
+  font-weight: 500;
+  line-height: 24px;
   letter-spacing: 0.15px;
+  color: var(--md-sys-color-primary);
+  margin-bottom: 4px;
 }
 
 .info-note p {
   margin: 0;
-  color: var(--md-on-primary-container);
-  font-size: var(--font-size-sm);
+  font-size: var(--md-sys-typescale-body-medium-size);
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--md-sys-color-on-primary-container);
 }
 
 .info-note a {
-  color: var(--md-primary);
+  color: var(--md-sys-color-primary);
   text-decoration: underline;
   font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.info-note a:hover {
-  color: var(--md-on-primary-container);
 }
 
 /* ===================================
-   Form Rows and Groups
+   Form Layout
    =================================== */
 
 .form-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-20);
-  margin-bottom: var(--spacing-24);
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .form-row:last-child {
@@ -282,7 +266,7 @@ form {
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-8);
+  gap: 8px;
 }
 
 .form-group.full-width {
@@ -290,25 +274,25 @@ form {
 }
 
 /* ===================================
-   Labels - Material Type Scale
+   Labels (Material Design)
    =================================== */
 
 label {
-  font-size: var(--font-size-sm);
+  font-size: var(--md-sys-typescale-body-medium-size);
   font-weight: 500;
-  color: var(--md-on-surface);
+  line-height: 20px;
   letter-spacing: 0.1px;
+  color: var(--md-sys-color-on-surface);
   display: block;
-  line-height: 1.4;
 }
 
 .required {
-  color: var(--md-error);
+  color: var(--md-sys-color-error);
   margin-left: 2px;
 }
 
 /* ===================================
-   Input Fields - Material 3 Outlined
+   Text Fields (Outlined)
    =================================== */
 
 input[type="text"],
@@ -317,99 +301,97 @@ input[type="tel"],
 input[type="url"],
 select,
 textarea {
-  font-family: var(--md-font-mono);
-  font-size: var(--font-size-base);
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--md-sys-typescale-body-large-size);
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
   width: 100%;
-  padding: 14px 16px;
-  border: 1px solid var(--md-outline);
-  border-radius: var(--md-shape-sm);
-  background: var(--md-surface-container-highest);
-  color: var(--md-on-surface);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 56px;
+  padding: 16px;
+  background-color: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
   outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+textarea {
+  min-height: 120px;
+  height: auto;
+  resize: vertical;
   line-height: 1.5;
 }
 
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="tel"]::placeholder,
-input[type="url"]::placeholder,
+input::placeholder,
 textarea::placeholder {
-  color: var(--md-on-surface-variant);
-  opacity: 0.7;
+  color: var(--md-sys-color-on-surface-variant);
+  opacity: 0.6;
 }
 
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="tel"]:hover,
-input[type="url"]:hover,
+input:hover,
 select:hover,
 textarea:hover {
-  border-color: var(--md-on-surface);
-  background: var(--md-surface-container-highest);
+  border-color: var(--md-sys-color-on-surface);
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
-input[type="url"]:focus,
+input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--md-primary);
+  border-color: var(--md-sys-color-primary);
   border-width: 2px;
-  padding: 13px 15px;
+  padding: 15px; /* Compensate for thicker border */
   box-shadow: 0 0 0 3px rgba(168, 199, 250, 0.12);
 }
 
 input:read-only {
-  background: var(--md-surface-container-low);
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
   cursor: not-allowed;
-  color: var(--md-on-surface-variant);
-  border-color: var(--md-outline-variant);
+  border-color: var(--md-sys-color-outline-variant);
 }
 
 select {
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23E2E2E6'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
 }
 
 select:disabled {
-  background: var(--md-surface-container-low);
+  background-color: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface-variant);
   cursor: not-allowed;
-  color: var(--md-on-surface-variant);
-  border-color: var(--md-outline-variant);
-  opacity: 0.6;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 120px;
-  font-family: var(--md-font-mono);
-  line-height: 1.6;
+  opacity: 0.38;
 }
 
 /* ===================================
-   Phone Input - Material Container
+   Phone Input
    =================================== */
 
 .phone-input {
   display: flex;
+  gap: 8px;
   align-items: stretch;
-  gap: var(--spacing-8);
 }
 
 .country-code {
-  padding: 14px 16px;
-  background: var(--md-surface-container-highest);
-  border: 1px solid var(--md-outline);
-  border-radius: var(--md-shape-sm);
-  font-size: var(--font-size-base);
+  height: 56px;
+  padding: 16px;
+  background-color: var(--md-sys-color-surface-container-highest);
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: var(--md-sys-shape-corner-small);
+  font-family: 'Roboto Mono', monospace;
+  font-size: var(--md-sys-typescale-body-large-size);
   font-weight: 500;
-  color: var(--md-on-surface);
-  font-family: var(--md-font-mono);
+  color: var(--md-sys-color-on-surface);
   display: flex;
   align-items: center;
-  min-width: 70px;
   justify-content: center;
+  min-width: 70px;
 }
 
 .phone-input input {
@@ -417,360 +399,295 @@ textarea {
 }
 
 /* ===================================
-   Experience Input
+   Experience Input (Dual Select)
    =================================== */
 
 .experience-input {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-12);
+  gap: 12px;
 }
 
 /* ===================================
-   Radio Groups - Material 3 FIXED
+   Radio Buttons (Material Design)
    =================================== */
 
 .radio-group {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
-  margin-top: var(--spacing-12);
-  padding: var(--spacing-8) 0;
+  gap: 0;
+  margin-top: 8px;
 }
 
 .radio-label {
   display: flex;
   align-items: center;
-  padding: var(--spacing-16) var(--spacing-20);
+  min-height: 48px;
+  padding: 12px 16px;
+  gap: 16px;
   cursor: pointer;
-  border-radius: var(--md-shape-md);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--md-sys-shape-corner-small);
   position: relative;
-  min-height: 56px;
-  gap: var(--spacing-16);
-  border: 1px solid transparent;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .radio-label::before {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: var(--md-shape-md);
-  background: var(--md-primary);
+  background-color: var(--md-sys-color-on-surface);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  border-radius: var(--md-sys-shape-corner-small);
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
 }
 
 .radio-label:hover::before {
-  opacity: var(--md-state-hover-opacity);
+  opacity: var(--md-sys-state-hover-opacity);
 }
 
 .radio-label:active::before {
-  opacity: var(--md-state-pressed-opacity);
-}
-
-/* Highlight selected radio option */
-.radio-label:has(input:checked) {
-  background: rgba(168, 199, 250, 0.08);
-  border-color: var(--md-outline-variant);
+  opacity: var(--md-sys-state-pressed-opacity);
 }
 
 .radio-label input[type="radio"] {
-  margin: 0;
   width: 20px;
   height: 20px;
+  margin: 0;
   cursor: pointer;
-  accent-color: var(--md-primary);
-  position: relative;
-  z-index: 1;
+  accent-color: var(--md-sys-color-primary);
   flex-shrink: 0;
 }
 
 .radio-label .radio-text {
-  font-size: var(--font-size-base);
-  font-family: var(--md-font-brand);
-  color: var(--md-on-surface);
-  position: relative;
-  z-index: 1;
-  letter-spacing: 0.15px;
-  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--md-sys-typescale-body-large-size);
   font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--md-sys-color-on-surface);
 }
 
-/* Add spacing between form groups in Employment Status */
-.form-section .form-group + .form-group {
-  margin-top: var(--spacing-32);
+/* Spacing between radio groups */
+.form-group + .form-group {
+  margin-top: 24px;
 }
 
 /* ===================================
-   File Input - Material 3 Button
+   File Input
    =================================== */
 
 input[type="file"] {
-  padding: var(--spacing-12);
-  font-size: var(--font-size-sm);
+  height: auto;
+  padding: 12px;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--md-sys-typescale-body-medium-size);
   cursor: pointer;
-  border: 1px solid var(--md-outline);
-  border-radius: var(--md-shape-sm);
-  background: var(--md-surface-container-highest);
-  color: var(--md-on-surface);
-  font-family: var(--md-font-brand);
 }
 
 input[type="file"]::file-selector-button {
-  padding: 10px 24px;
-  background: var(--md-primary);
-  color: var(--md-on-primary);
+  height: 40px;
+  padding: 0 24px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
   border: none;
-  border-radius: var(--md-shape-sm);
-  cursor: pointer;
-  font-size: var(--font-size-sm);
+  border-radius: var(--md-sys-shape-corner-small);
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--md-sys-typescale-label-large-size);
   font-weight: 500;
   letter-spacing: 0.1px;
-  margin-right: var(--spacing-16);
+  cursor: pointer;
+  margin-right: 16px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--md-elevation-1);
-  font-family: var(--md-font-brand);
 }
 
 input[type="file"]::file-selector-button:hover {
-  background: var(--md-primary-container);
-  box-shadow: var(--md-elevation-2);
-}
-
-input[type="file"]::file-selector-button:active {
-  box-shadow: var(--md-elevation-1);
+  background-color: var(--md-sys-color-primary-container);
+  box-shadow: var(--md-sys-elevation-level1);
 }
 
 /* ===================================
-   Help Text - Material Body
+   Supporting Text (Helper/Error Text)
    =================================== */
 
 .help-text {
-  font-size: var(--font-size-xs);
-  font-family: var(--md-font-brand);
-  color: var(--md-on-surface-variant);
-  margin-top: var(--spacing-4);
-  display: block;
+  font-size: var(--md-sys-typescale-body-small-size);
+  font-weight: 400;
+  line-height: 16px;
   letter-spacing: 0.4px;
-  line-height: 1.4;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-top: 4px;
+  display: block;
 }
 
 .help-text.error {
-  color: var(--md-error);
+  color: var(--md-sys-color-error);
 }
 
 .help-text.success {
-  color: var(--md-success);
+  color: var(--md-sys-color-success);
 }
 
 /* ===================================
-   Messages - Material 3 Containers
+   Snackbar (Message)
    =================================== */
 
 .message {
-  padding: var(--spacing-16) var(--spacing-20);
-  border-radius: var(--md-shape-md);
-  margin-bottom: var(--spacing-24);
-  font-size: var(--font-size-sm);
-  font-family: var(--md-font-brand);
-  font-weight: 500;
+  padding: 16px;
+  border-radius: var(--md-sys-shape-corner-small);
+  margin-bottom: 16px;
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
   display: none;
-  box-shadow: var(--md-elevation-1);
-  letter-spacing: 0.1px;
-  line-height: 1.5;
+  box-shadow: var(--md-sys-elevation-level3);
 }
 
 .message.success {
-  background: var(--md-success-container);
-  color: var(--md-on-success-container);
-  border-left: 4px solid var(--md-success);
+  background-color: var(--md-sys-color-success-container);
+  color: var(--md-sys-color-on-success-container);
 }
 
 .message.error {
-  background: var(--md-error-container);
-  color: var(--md-on-error-container);
-  border-left: 4px solid var(--md-error);
+  background-color: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
 }
 
 .message.info {
-  background: var(--md-primary-container);
-  color: var(--md-on-primary-container);
-  border-left: 4px solid var(--md-primary);
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
 }
 
 /* ===================================
-   Submit Button - Material 3 Filled
+   Filled Button (Submit)
    =================================== */
 
 .btn-submit {
   width: 100%;
-  padding: var(--spacing-16) var(--spacing-24);
-  background: var(--md-primary);
-  color: var(--md-on-primary);
+  height: 48px;
+  padding: 0 24px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
   border: none;
-  border-radius: var(--md-shape-sm);
-  font-size: var(--font-size-base);
-  font-family: var(--md-font-brand);
+  border-radius: var(--md-sys-shape-corner-small);
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--md-sys-typescale-label-large-size);
   font-weight: 500;
+  line-height: 20px;
   letter-spacing: 0.1px;
   cursor: pointer;
+  box-shadow: var(--md-sys-elevation-level1);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--md-elevation-1);
-  position: relative;
-  overflow: hidden;
-  min-height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-8);
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-submit .material-symbols-outlined {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .btn-submit::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--md-on-primary);
+  background-color: var(--md-sys-color-on-primary);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-submit:hover:not(:disabled)::before {
-  opacity: var(--md-state-hover-opacity);
+  opacity: var(--md-sys-state-hover-opacity);
 }
 
 .btn-submit:hover:not(:disabled) {
-  box-shadow: var(--md-elevation-2);
-  transform: translateY(-1px);
+  box-shadow: var(--md-sys-elevation-level2);
 }
 
 .btn-submit:active:not(:disabled)::before {
-  opacity: var(--md-state-pressed-opacity);
-}
-
-.btn-submit:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: var(--md-elevation-1);
+  opacity: var(--md-sys-state-pressed-opacity);
 }
 
 .btn-submit:disabled {
-  background: var(--md-surface-variant);
-  color: var(--md-on-surface);
+  background-color: var(--md-sys-color-surface-variant);
+  color: var(--md-sys-color-on-surface);
   cursor: not-allowed;
   opacity: 0.38;
   box-shadow: none;
 }
 
 /* ===================================
-   Modal - Material 3 Dialog
+   Dialog (Modal)
    =================================== */
 
 .modal {
   display: none;
   position: fixed;
+  inset: 0;
   z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(4px);
   animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(2px);
-}
-
-@keyframes fadeIn {
-  from { 
-    opacity: 0;
-  }
-  to { 
-    opacity: 1;
-  }
 }
 
 .modal-content {
-  background: var(--md-surface-container-high);
-  color: var(--md-on-surface);
+  position: relative;
+  background-color: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
   margin: 10% auto;
-  padding: var(--spacing-40);
-  border-radius: var(--md-shape-xl);
-  max-width: 480px;
+  padding: 24px;
+  border-radius: var(--md-sys-shape-corner-extra-large);
+  max-width: 560px;
+  box-shadow: var(--md-sys-elevation-level3);
   text-align: center;
-  box-shadow: var(--md-elevation-4);
-  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-50px) scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
+  animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .checkmark {
-  font-size: 72px;
-  margin-bottom: var(--spacing-24);
-  animation: checkmarkPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s backwards;
+  margin-bottom: 16px;
 }
 
 .checkmark .material-symbols-outlined {
-  font-size: 72px;
-  color: var(--md-success);
-  font-variation-settings:
-    'FILL' 1,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48;
-}
-
-@keyframes checkmarkPop {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+  font-size: 64px;
+  color: var(--md-sys-color-success);
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
 }
 
 .modal-content h2 {
-  color: var(--md-success);
-  margin-bottom: var(--spacing-16);
-  font-size: var(--font-size-2xl);
-  font-weight: 500;
-  letter-spacing: 0.15px;
-  font-family: var(--md-font-brand);
+  font-size: var(--md-sys-typescale-headline-small-size);
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0;
+  color: var(--md-sys-color-success);
+  margin-bottom: 16px;
 }
 
 .modal-content p {
-  font-size: var(--font-size-base);
-  font-family: var(--md-font-brand);
-  color: var(--md-on-surface-variant);
-  line-height: 1.6;
-  margin-bottom: var(--spacing-32);
-  letter-spacing: 0.15px;
+  font-size: var(--md-sys-typescale-body-medium-size);
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: var(--md-sys-color-on-surface-variant);
+  margin-bottom: 24px;
 }
 
 .btn-close {
-  padding: 12px 32px;
-  background: var(--md-primary);
-  color: var(--md-on-primary);
+  height: 40px;
+  padding: 0 24px;
+  background-color: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
   border: none;
-  border-radius: var(--md-shape-sm);
-  font-size: var(--font-size-sm);
-  font-family: var(--md-font-brand);
+  border-radius: var(--md-sys-shape-corner-small);
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--md-sys-typescale-label-large-size);
   font-weight: 500;
   letter-spacing: 0.1px;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--md-elevation-1);
-  min-height: 40px;
   position: relative;
   overflow: hidden;
 }
@@ -779,52 +696,56 @@ input[type="file"]::file-selector-button:active {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--md-on-primary);
+  background-color: var(--md-sys-color-on-primary);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-close:hover::before {
-  opacity: var(--md-state-hover-opacity);
+  opacity: var(--md-sys-state-hover-opacity);
 }
 
-.btn-close:hover {
-  box-shadow: var(--md-elevation-2);
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.btn-close:active::before {
-  opacity: var(--md-state-pressed-opacity);
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 /* ===================================
-   Responsive Design - Material Breakpoints
+   Responsive (Material Breakpoints)
    =================================== */
 
 @media (max-width: 840px) {
   .container {
-    margin: var(--spacing-24) var(--spacing-16);
-    border-radius: var(--md-shape-lg);
+    margin: 16px;
+    border-radius: var(--md-sys-shape-corner-large);
   }
 
   .header h1 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--md-sys-typescale-headline-small-size);
   }
 
   form {
-    padding: var(--spacing-24) var(--spacing-16);
+    padding: 16px;
   }
 
   .form-section {
-    padding: var(--spacing-20);
+    padding: 16px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
-    gap: var(--spacing-16);
-  }
-
-  .section-title {
-    font-size: var(--font-size-lg);
+    gap: 12px;
   }
 
   .experience-input {
@@ -834,51 +755,25 @@ input[type="file"]::file-selector-button:active {
 
 @media (max-width: 600px) {
   .container {
-    margin: var(--spacing-16);
-    border-radius: var(--md-shape-md);
-  }
-
-  .header {
-    padding: var(--spacing-16);
-  }
-
-  .header h1 {
-    font-size: var(--font-size-xl);
-  }
-
-  form {
-    padding: var(--spacing-16);
-  }
-
-  .form-section {
-    padding: var(--spacing-16);
+    margin: 8px;
   }
 
   .phone-input {
     flex-direction: column;
-    align-items: stretch;
-  }
-
-  .country-code {
-    text-align: center;
   }
 
   .modal-content {
-    margin: 20% var(--spacing-16);
-    padding: var(--spacing-24);
-  }
-
-  .info-note {
-    padding: var(--spacing-12) var(--spacing-16);
+    margin: 20% 16px;
+    padding: 16px;
   }
 }
 
 /* ===================================
-   Accessibility Enhancements
+   Accessibility
    =================================== */
 
 *:focus-visible {
-  outline: 2px solid var(--md-primary);
+  outline: 2px solid var(--md-sys-color-primary);
   outline-offset: 2px;
 }
 
@@ -893,7 +788,7 @@ input[type="file"]::file-selector-button:active {
 }
 
 /* ===================================
-   Loading State
+   Loading Spinner
    =================================== */
 
 .btn-submit:disabled::after {
@@ -901,18 +796,12 @@ input[type="file"]::file-selector-button:active {
   position: absolute;
   width: 16px;
   height: 16px;
-  top: 50%;
-  left: 50%;
-  margin-left: -8px;
-  margin-top: -8px;
-  border: 2px solid var(--md-on-surface);
-  border-radius: 50%;
+  border: 2px solid var(--md-sys-color-on-surface);
   border-top-color: transparent;
-  animation: spinner 0.6s linear infinite;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
 }
 
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
