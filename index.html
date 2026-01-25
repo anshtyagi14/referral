@@ -7,15 +7,15 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1>Employee Referral Portal</h1>
-      <p class="subtitle">Help us build exceptional teams</p>
-    </header>
+  <header class="header">
+    <h1>Employee Referral Portal</h1>
+    <p class="subtitle">Help us build exceptional teams</p>
+  </header>
 
+  <div class="container">
     <form 
       id="referralForm"
-      action="https://script.google.com/macros/s/AKfycbypPZMKvSmd9Dv9oaMDZxegPX7GcxIv8BZuPSZF--nHOMu9pQppnMKHVGK_PLIICxb68A/exec"
+      action="https://script.google.com/macros/s/AKfycbzyaDbiQAj1cKf2Dg9IUPIGMBoZOpB3aD9gHzr4Byr4vGvN9KqDpLmQqb8mMFROj2pzMA/exec"
       method="POST"
       enctype="application/x-www-form-urlencoded"
     >
@@ -24,7 +24,6 @@
       <input type="hidden" name="resumeName" id="resumeName" />
       <input type="hidden" name="resumeType" id="resumeType" />
       <input type="hidden" name="fullName" id="fullName" />
-      <input type="hidden" name="totalExperienceMonths" id="totalExperienceMonths" />
       <input type="hidden" name="experienceDisplay" id="experienceDisplay" />
       <input type="hidden" name="phone" id="phoneHidden" />
 
@@ -216,6 +215,16 @@
         Submit Referral
       </button>
     </form>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="checkmark">✅</div>
+      <h2>Referral Submitted Successfully!</h2>
+      <p>Thank you for your referral. Our team will review the submission and get in touch soon.</p>
+      <button onclick="closeModal()" class="btn-close">Close</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
