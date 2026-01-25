@@ -1,13 +1,10 @@
 console.log("✅ Referral Portal Script Loaded");
 
-// Configuration
 const ROLES_JSON_URL = "./roles.json";
 const POSTAL_API_URL = "https://api.postalpincode.in/pincode/";
 
-// Global variables
 let rolesData = [];
 
-// DOM Elements
 const form = document.getElementById("referralForm");
 const expYears = document.getElementById("expYears");
 const expMonths = document.getElementById("expMonths");
@@ -21,15 +18,14 @@ const linkedinHelp = document.getElementById("linkedinHelp");
 const resumeFileInput = document.getElementById("resumeFile");
 const messageDiv = document.getElementById("message");
 const submitBtn = document.getElementById("submitBtn");
+const successModal = document.getElementById("successModal");
 
-// Initialize
 document.addEventListener("DOMContentLoaded", async () => {
   populateExperienceDropdowns();
   await loadRoles();
   attachEventListeners();
 });
 
-// Populate Years (0-30) and Months (0-11)
 function populateExperienceDropdowns() {
   for (let i = 0; i <= 30; i++) {
     const opt = document.createElement("option");
@@ -46,7 +42,6 @@ function populateExperienceDropdowns() {
   }
 }
 
-// Load roles from JSON
 async function loadRoles() {
   try {
     const response = await fetch(ROLES_JSON_URL);
@@ -60,7 +55,6 @@ async function loadRoles() {
   }
 }
 
-// Attach event listeners
 function attachEventListeners() {
   expYears.addEventListener("change", updateRoleOptions);
   expMonths.addEventListener("change", updateRoleOptions);
@@ -69,7 +63,6 @@ function attachEventListeners() {
   form.addEventListener("submit", handleSubmit);
 }
 
-// Update role options based on total experience
 function updateRoleOptions() {
   const years = parseInt(expYears.value) || 0;
   const months = parseInt(expMonths.value) || 0;
@@ -107,7 +100,6 @@ function updateRoleOptions() {
   }
 }
 
-// Verify postal code and auto-fill city
 async function verifyPostalCode() {
   const pincode = postalCodeInput.value.trim();
 
@@ -143,7 +135,6 @@ async function verifyPostalCode() {
   }
 }
 
-// Validate LinkedIn URL format
 function validateLinkedIn() {
   const url = linkedinInput.value.trim();
 
@@ -164,7 +155,6 @@ function validateLinkedIn() {
   }
 }
 
-// Handle form submission
 async function handleSubmit(e) {
   e.preventDefault();
 
@@ -174,7 +164,6 @@ async function handleSubmit(e) {
   showMessage("Processing your referral...", "info");
 
   try {
-    // Get full name
     const firstName = document.getElementById("firstName").value.trim();
     const middleName = document.getElementById("middleName").value.trim();
     const lastName = document.getElementById("lastName").value.trim();
@@ -182,17 +171,13 @@ async function handleSubmit(e) {
       ? `${firstName} ${middleName} ${lastName}`
       : `${firstName} ${lastName}`;
 
-    // Get experience
     const years = parseInt(expYears.value) || 0;
     const months = parseInt(expMonths.value) || 0;
-    const totalMonths = (years * 12) + months;
     const experienceDisplay = `${years} years ${months} months`;
 
-    // Get phone with +91
     const phoneInput = document.getElementById("phoneInput").value.trim();
     const phone = `+91${phoneInput}`;
 
-    // Encode resume
     const resumeFile = resumeFileInput.files[0];
     if (!resumeFile) {
       showMessage("Please upload your resume", "error");
@@ -215,20 +200,14 @@ async function handleSubmit(e) {
     showMessage("Encoding resume...", "info");
     const base64 = await fileToBase64(resumeFile);
 
-    // Set hidden fields
     document.getElementById("fullName").value = fullName;
-    document.getElementById("totalExperienceMonths").value = totalMonths;
     document.getElementById("experienceDisplay").value = experienceDisplay;
     document.getElementById("phoneHidden").value = phone;
     document.getElementById("resumeBase64").value = base64;
     document.getElementById("resumeName").value = resumeFile.name;
     document.getElementById("resumeType").value = resumeFile.type;
 
-    // Get employment status
-    const employmentStatus = document.querySelector('input[name="employmentStatus"]:checked');
     const hasOffer = document.querySelector('input[name="hasOffer"]:checked');
-    
-    // Set default if hasOffer not selected
     if (!hasOffer) {
       const noOfferInput = document.createElement('input');
       noOfferInput.type = 'hidden';
@@ -239,154 +218,29 @@ async function handleSubmit(e) {
 
     showMessage("Submitting referral...", "info");
 
-    // Open success window BEFORE form submit
-    const successWindow = window.open("", "successWindow", "width=500,height=400");
-    successWindow.document.write(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Processing Referral...</title>
-        <style>
-          body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
-            color: white;
-            text-align: center;
-            padding: 20px;
-          }
-          .container {
-            background: white;
-            color: #1a1a1a;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            max-width: 400px;
-          }
-          .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #0066cc;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-          }
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-          h1 {
-            color: #0066cc;
-            margin-bottom: 16px;
-            font-size: 24px;
-          }
-          p {
-            font-size: 16px;
-            color: #5a5a5a;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="spinner"></div>
-          <h1>Processing Your Referral</h1>
-          <p>Please wait while we submit your referral...</p>
-        </div>
-      </body>
-      </html>
-    `);
+    // Create hidden iframe for submission
+    let iframe = document.getElementById('hidden_iframe');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.id = 'hidden_iframe';
+      iframe.name = 'hidden_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
 
-    // Wait a bit for window to render, then submit
+    form.target = 'hidden_iframe';
+    form.submit();
+
+    // Show success modal after a delay
     setTimeout(() => {
-      form.target = "successWindow";
-      form.submit();
-
-      // Update success window after submission
-      setTimeout(() => {
-        successWindow.document.write(`
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>Referral Submitted</title>
-            <style>
-              body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh;
-                margin: 0;
-                background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
-                color: white;
-                text-align: center;
-                padding: 20px;
-              }
-              .container {
-                background: white;
-                color: #1a1a1a;
-                padding: 40px;
-                border-radius: 8px;
-                box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-                max-width: 400px;
-              }
-              h1 {
-                color: #2d7a3e;
-                margin-bottom: 16px;
-                font-size: 28px;
-              }
-              p {
-                font-size: 16px;
-                line-height: 1.6;
-                margin-bottom: 24px;
-                color: #5a5a5a;
-              }
-              .checkmark {
-                font-size: 64px;
-                margin-bottom: 16px;
-              }
-              button {
-                padding: 12px 24px;
-                background: #0066cc;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                font-size: 14px;
-                cursor: pointer;
-                font-weight: 600;
-              }
-              button:hover {
-                background: #0052a3;
-              }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="checkmark">✅</div>
-              <h1>Referral Submitted Successfully!</h1>
-              <p>Thank you for your referral. Our team will review the submission and get in touch soon.</p>
-              <button onclick="window.close()">Close Window</button>
-            </div>
-          </body>
-          </html>
-        `);
-      }, 2000);
-
-      // Reset main form
-      setTimeout(() => {
-        form.reset();
-        cityInput.value = "";
-        roleSelect.innerHTML = '<option value="">Select experience first</option>';
-        roleSelect.disabled = true;
-        showMessage("Referral submitted successfully! Check the new window.", "success");
-        submitBtn.disabled = false;
-      }, 2500);
-
-    }, 500);
+      successModal.style.display = 'block';
+      form.reset();
+      cityInput.value = "";
+      roleSelect.innerHTML = '<option value="">Select experience first</option>';
+      roleSelect.disabled = true;
+      messageDiv.style.display = 'none';
+      submitBtn.disabled = false;
+    }, 1500);
 
   } catch (err) {
     console.error("Submission error:", err);
@@ -395,7 +249,6 @@ async function handleSubmit(e) {
   }
 }
 
-// Validate entire form
 function validateForm() {
   const phoneInput = document.getElementById("phoneInput").value.trim();
   if (!/^[6-9][0-9]{9}$/.test(phoneInput)) {
@@ -428,7 +281,6 @@ function validateForm() {
   return true;
 }
 
-// Show message helper
 function showMessage(msg, type) {
   messageDiv.textContent = msg;
   messageDiv.className = `message ${type}`;
@@ -436,7 +288,6 @@ function showMessage(msg, type) {
   messageDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-// Convert file to base64
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -444,4 +295,15 @@ function fileToBase64(file) {
     reader.onerror = reject;
     reader.readAsDataURL(file);
   });
+}
+
+function closeModal() {
+  successModal.style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  if (event.target == successModal) {
+    closeModal();
+  }
 }
