@@ -70,16 +70,30 @@
   --md-shape-lg: 20px;
   --md-shape-xl: 28px;
   
-  /* Spacing */
-  --md-spacing-xs: 4px;
-  --md-spacing-sm: 8px;
-  --md-spacing-md: 16px;
-  --md-spacing-lg: 24px;
-  --md-spacing-xl: 32px;
+  /* Spacing - Consistent 8px grid */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
   
-  /* Typography */
-  --md-font-brand: 'Roboto', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --md-font-mono: 'Roboto Mono', 'Inconsolata', monospace;
+  /* Typography Scale */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+  
+  /* Font Families */
+  --md-font-brand: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  --md-font-mono: 'Roboto Mono', 'Courier New', monospace;
 }
 
 /* ===================================
@@ -88,6 +102,7 @@
 
 body {
   font-family: var(--md-font-brand);
+  font-size: var(--font-size-base);
   background: var(--md-background);
   color: var(--md-on-background);
   line-height: 1.5;
@@ -97,13 +112,27 @@ body {
 }
 
 /* ===================================
+   Material Icons Configuration
+   =================================== */
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+  vertical-align: middle;
+  user-select: none;
+}
+
+/* ===================================
    Header - Material 3 Surface
    =================================== */
 
 .header {
   background: linear-gradient(135deg, var(--md-primary-container) 0%, #0D3A6F 100%);
   color: var(--md-on-primary-container);
-  padding: var(--md-spacing-lg) var(--md-spacing-md);
+  padding: var(--spacing-24) var(--spacing-16);
   text-align: center;
   box-shadow: var(--md-elevation-2);
   position: relative;
@@ -118,12 +147,13 @@ body {
 }
 
 .header h1 {
-  font-size: 28px;
+  font-size: var(--font-size-3xl);
   font-weight: 500;
   letter-spacing: 0.25px;
   margin: 0;
   position: relative;
   z-index: 1;
+  color: var(--md-on-primary-container);
 }
 
 /* ===================================
@@ -132,7 +162,7 @@ body {
 
 .container {
   max-width: 1100px;
-  margin: var(--md-spacing-xl) auto;
+  margin: var(--spacing-32) auto;
   background: var(--md-surface-container);
   box-shadow: var(--md-elevation-2);
   border-radius: var(--md-shape-xl);
@@ -144,12 +174,12 @@ body {
    =================================== */
 
 form {
-  padding: var(--md-spacing-xl) var(--md-spacing-lg);
+  padding: var(--spacing-32) var(--spacing-24);
 }
 
 .form-section {
-  margin-bottom: var(--md-spacing-xl);
-  padding: var(--md-spacing-lg);
+  margin-bottom: var(--spacing-32);
+  padding: var(--spacing-24);
   background: var(--md-surface-container-high);
   border-radius: var(--md-shape-lg);
   box-shadow: var(--md-elevation-1);
@@ -161,17 +191,25 @@ form {
 }
 
 .form-section:last-of-type {
-  margin-bottom: var(--md-spacing-lg);
+  margin-bottom: var(--spacing-24);
 }
 
 .section-title {
-  font-size: 22px;
+  font-size: var(--font-size-xl);
   font-weight: 500;
   color: var(--md-primary);
-  margin-bottom: var(--md-spacing-lg);
-  padding-bottom: var(--md-spacing-md);
+  margin-bottom: var(--spacing-24);
+  padding-bottom: var(--spacing-16);
   border-bottom: 2px solid var(--md-outline-variant);
   letter-spacing: 0.15px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.section-title .material-symbols-outlined {
+  font-size: 28px;
+  color: var(--md-primary);
 }
 
 /* ===================================
@@ -181,21 +219,38 @@ form {
 .info-note {
   background: var(--md-primary-container);
   border-left: 4px solid var(--md-primary);
-  padding: var(--md-spacing-md) var(--md-spacing-lg);
-  margin-bottom: var(--md-spacing-lg);
+  padding: var(--spacing-16) var(--spacing-20);
+  margin-bottom: var(--spacing-24);
   border-radius: var(--md-shape-md);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   line-height: 1.6;
   color: var(--md-on-primary-container);
   box-shadow: var(--md-elevation-1);
+  display: flex;
+  gap: var(--spacing-12);
+  align-items: flex-start;
+}
+
+.info-note .material-symbols-outlined {
+  font-size: 24px;
+  color: var(--md-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .info-note strong {
   display: block;
-  margin-bottom: var(--md-spacing-sm);
+  margin-bottom: var(--spacing-8);
   color: var(--md-primary);
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--font-size-base);
+  letter-spacing: 0.15px;
+}
+
+.info-note p {
+  margin: 0;
+  color: var(--md-on-primary-container);
+  font-size: var(--font-size-sm);
 }
 
 .info-note a {
@@ -216,14 +271,18 @@ form {
 .form-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--md-spacing-lg);
-  margin-bottom: var(--md-spacing-lg);
+  gap: var(--spacing-20);
+  margin-bottom: var(--spacing-24);
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-spacing-sm);
+  gap: var(--spacing-8);
 }
 
 .form-group.full-width {
@@ -235,11 +294,12 @@ form {
    =================================== */
 
 label {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   color: var(--md-on-surface);
   letter-spacing: 0.1px;
   display: block;
+  line-height: 1.4;
 }
 
 .required {
@@ -258,15 +318,25 @@ input[type="url"],
 select,
 textarea {
   font-family: var(--md-font-mono);
+  font-size: var(--font-size-base);
   width: 100%;
   padding: 14px 16px;
   border: 1px solid var(--md-outline);
   border-radius: var(--md-shape-sm);
-  font-size: 16px;
   background: var(--md-surface-container-highest);
   color: var(--md-on-surface);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
+  line-height: 1.5;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="url"]::placeholder,
+textarea::placeholder {
+  color: var(--md-on-surface-variant);
+  opacity: 0.7;
 }
 
 input[type="text"]:hover,
@@ -287,7 +357,7 @@ select:focus,
 textarea:focus {
   border-color: var(--md-primary);
   border-width: 2px;
-  padding: 13px 15px; /* Compensate for border width change */
+  padding: 13px 15px;
   box-shadow: 0 0 0 3px rgba(168, 199, 250, 0.12);
 }
 
@@ -296,6 +366,10 @@ input:read-only {
   cursor: not-allowed;
   color: var(--md-on-surface-variant);
   border-color: var(--md-outline-variant);
+}
+
+select {
+  cursor: pointer;
 }
 
 select:disabled {
@@ -320,7 +394,7 @@ textarea {
 .phone-input {
   display: flex;
   align-items: stretch;
-  gap: var(--md-spacing-sm);
+  gap: var(--spacing-8);
 }
 
 .country-code {
@@ -328,7 +402,7 @@ textarea {
   background: var(--md-surface-container-highest);
   border: 1px solid var(--md-outline);
   border-radius: var(--md-shape-sm);
-  font-size: 16px;
+  font-size: var(--font-size-base);
   font-weight: 500;
   color: var(--md-on-surface);
   font-family: var(--md-font-mono);
@@ -349,29 +423,30 @@ textarea {
 .experience-input {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--md-spacing-md);
+  gap: var(--spacing-12);
 }
 
 /* ===================================
-   Radio Groups - Material 3
+   Radio Groups - Material 3 FIXED
    =================================== */
 
 .radio-group {
   display: flex;
   flex-direction: column;
-  gap: var(--md-spacing-sm);
-  margin-top: var(--md-spacing-sm);
+  gap: var(--spacing-8);
+  margin-top: var(--spacing-8);
 }
 
 .radio-label {
   display: flex;
   align-items: center;
-  padding: var(--md-spacing-md);
+  padding: var(--spacing-12) var(--spacing-16);
   cursor: pointer;
   border-radius: var(--md-shape-sm);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  min-height: 48px; /* Material touch target */
+  min-height: 48px;
+  gap: var(--spacing-12);
 }
 
 .radio-label::before {
@@ -393,21 +468,25 @@ textarea {
 }
 
 .radio-label input[type="radio"] {
-  margin-right: var(--md-spacing-md);
+  margin: 0;
   width: 20px;
   height: 20px;
   cursor: pointer;
   accent-color: var(--md-primary);
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
 }
 
-.radio-label span {
-  font-size: 16px;
+.radio-label .radio-text {
+  font-size: var(--font-size-base);
+  font-family: var(--md-font-brand);
   color: var(--md-on-surface);
   position: relative;
   z-index: 1;
   letter-spacing: 0.15px;
+  line-height: 1.5;
+  font-weight: 400;
 }
 
 /* ===================================
@@ -415,13 +494,14 @@ textarea {
    =================================== */
 
 input[type="file"] {
-  padding: var(--md-spacing-sm);
-  font-size: 14px;
+  padding: var(--spacing-12);
+  font-size: var(--font-size-sm);
   cursor: pointer;
   border: 1px solid var(--md-outline);
   border-radius: var(--md-shape-sm);
   background: var(--md-surface-container-highest);
   color: var(--md-on-surface);
+  font-family: var(--md-font-brand);
 }
 
 input[type="file"]::file-selector-button {
@@ -431,12 +511,13 @@ input[type="file"]::file-selector-button {
   border: none;
   border-radius: var(--md-shape-sm);
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   letter-spacing: 0.1px;
-  margin-right: var(--md-spacing-md);
+  margin-right: var(--spacing-16);
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: var(--md-elevation-1);
+  font-family: var(--md-font-brand);
 }
 
 input[type="file"]::file-selector-button:hover {
@@ -453,9 +534,10 @@ input[type="file"]::file-selector-button:active {
    =================================== */
 
 .help-text {
-  font-size: 12px;
+  font-size: var(--font-size-xs);
+  font-family: var(--md-font-brand);
   color: var(--md-on-surface-variant);
-  margin-top: var(--md-spacing-xs);
+  margin-top: var(--spacing-4);
   display: block;
   letter-spacing: 0.4px;
   line-height: 1.4;
@@ -474,10 +556,11 @@ input[type="file"]::file-selector-button:active {
    =================================== */
 
 .message {
-  padding: var(--md-spacing-md) var(--md-spacing-lg);
+  padding: var(--spacing-16) var(--spacing-20);
   border-radius: var(--md-shape-md);
-  margin-bottom: var(--md-spacing-lg);
-  font-size: 14px;
+  margin-bottom: var(--spacing-24);
+  font-size: var(--font-size-sm);
+  font-family: var(--md-font-brand);
   font-weight: 500;
   display: none;
   box-shadow: var(--md-elevation-1);
@@ -509,12 +592,13 @@ input[type="file"]::file-selector-button:active {
 
 .btn-submit {
   width: 100%;
-  padding: 16px 24px;
+  padding: var(--spacing-16) var(--spacing-24);
   background: var(--md-primary);
   color: var(--md-on-primary);
   border: none;
   border-radius: var(--md-shape-sm);
-  font-size: 16px;
+  font-size: var(--font-size-base);
+  font-family: var(--md-font-brand);
   font-weight: 500;
   letter-spacing: 0.1px;
   cursor: pointer;
@@ -523,6 +607,14 @@ input[type="file"]::file-selector-button:active {
   position: relative;
   overflow: hidden;
   min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+}
+
+.btn-submit .material-symbols-outlined {
+  font-size: 20px;
 }
 
 .btn-submit::before {
@@ -560,11 +652,6 @@ input[type="file"]::file-selector-button:active {
   box-shadow: none;
 }
 
-.btn-submit span {
-  position: relative;
-  z-index: 1;
-}
-
 /* ===================================
    Modal - Material 3 Dialog
    =================================== */
@@ -595,7 +682,7 @@ input[type="file"]::file-selector-button:active {
   background: var(--md-surface-container-high);
   color: var(--md-on-surface);
   margin: 10% auto;
-  padding: var(--md-spacing-xl);
+  padding: var(--spacing-40);
   border-radius: var(--md-shape-xl);
   max-width: 480px;
   text-align: center;
@@ -616,8 +703,18 @@ input[type="file"]::file-selector-button:active {
 
 .checkmark {
   font-size: 72px;
-  margin-bottom: var(--md-spacing-lg);
+  margin-bottom: var(--spacing-24);
   animation: checkmarkPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s backwards;
+}
+
+.checkmark .material-symbols-outlined {
+  font-size: 72px;
+  color: var(--md-success);
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48;
 }
 
 @keyframes checkmarkPop {
@@ -631,17 +728,19 @@ input[type="file"]::file-selector-button:active {
 
 .modal-content h2 {
   color: var(--md-success);
-  margin-bottom: var(--md-spacing-md);
-  font-size: 24px;
+  margin-bottom: var(--spacing-16);
+  font-size: var(--font-size-2xl);
   font-weight: 500;
   letter-spacing: 0.15px;
+  font-family: var(--md-font-brand);
 }
 
 .modal-content p {
-  font-size: 16px;
+  font-size: var(--font-size-base);
+  font-family: var(--md-font-brand);
   color: var(--md-on-surface-variant);
   line-height: 1.6;
-  margin-bottom: var(--md-spacing-xl);
+  margin-bottom: var(--spacing-32);
   letter-spacing: 0.15px;
 }
 
@@ -651,7 +750,8 @@ input[type="file"]::file-selector-button:active {
   color: var(--md-on-primary);
   border: none;
   border-radius: var(--md-shape-sm);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
+  font-family: var(--md-font-brand);
   font-weight: 500;
   letter-spacing: 0.1px;
   cursor: pointer;
@@ -689,29 +789,29 @@ input[type="file"]::file-selector-button:active {
 
 @media (max-width: 840px) {
   .container {
-    margin: var(--md-spacing-lg) var(--md-spacing-md);
+    margin: var(--spacing-24) var(--spacing-16);
     border-radius: var(--md-shape-lg);
   }
 
   .header h1 {
-    font-size: 24px;
+    font-size: var(--font-size-2xl);
   }
 
   form {
-    padding: var(--md-spacing-lg) var(--md-spacing-md);
+    padding: var(--spacing-24) var(--spacing-16);
   }
 
   .form-section {
-    padding: var(--md-spacing-md);
+    padding: var(--spacing-20);
   }
 
   .form-row {
     grid-template-columns: 1fr;
-    gap: var(--md-spacing-md);
+    gap: var(--spacing-16);
   }
 
   .section-title {
-    font-size: 20px;
+    font-size: var(--font-size-lg);
   }
 
   .experience-input {
@@ -721,24 +821,24 @@ input[type="file"]::file-selector-button:active {
 
 @media (max-width: 600px) {
   .container {
-    margin: var(--md-spacing-md);
+    margin: var(--spacing-16);
     border-radius: var(--md-shape-md);
   }
 
   .header {
-    padding: var(--md-spacing-md);
+    padding: var(--spacing-16);
   }
 
   .header h1 {
-    font-size: 20px;
+    font-size: var(--font-size-xl);
   }
 
   form {
-    padding: var(--md-spacing-md);
+    padding: var(--spacing-16);
   }
 
   .form-section {
-    padding: var(--md-spacing-sm) var(--md-spacing-md);
+    padding: var(--spacing-16);
   }
 
   .phone-input {
@@ -751,12 +851,12 @@ input[type="file"]::file-selector-button:active {
   }
 
   .modal-content {
-    margin: 20% var(--md-spacing-md);
-    padding: var(--md-spacing-lg);
+    margin: 20% var(--spacing-16);
+    padding: var(--spacing-24);
   }
 
   .info-note {
-    padding: var(--md-spacing-sm) var(--md-spacing-md);
+    padding: var(--spacing-12) var(--spacing-16);
   }
 }
 
