@@ -1,9 +1,9 @@
 {
   "roles": [
-    { "name": "SRE", "minExperienceMonths": 36, "maxExperienceMonths": 120 },
-    { "name": "DevOps Engineer", "minExperienceMonths": 24, "maxExperienceMonths": 84 },
-    { "name": "Backend Engineer", "minExperienceMonths": 12, "maxExperienceMonths": 72 },
-    { "name": "Frontend Engineer", "minExperienceMonths": 12, "maxExperienceMonths": 72 },
-    { "name": "Architect", "minExperienceMonths": 144, "maxExperienceMonths": 0 }
+    { "name": "SRE", "minExperienceYears": 3, "maxExperienceYears": 10 },
+    { "name": "DevOps Engineer", "minExperienceYears": 2, "maxExperienceYears": 7 },
+    { "name": "Backend Engineer", "minExperienceYears": 1, "maxExperienceYears": 6 },
+    { "name": "Frontend Engineer", "minExperienceYears": 1, "maxExperienceYears": 6 },
+    { "name": "Architect", "minExperienceYears": 12, "maxExperienceYears": 0 }
   ]
 }
