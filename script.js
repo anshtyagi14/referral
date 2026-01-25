@@ -39,8 +39,6 @@ async function checkFormStatus() {
     const scriptUrl = form.action;
     const statusUrl = `${scriptUrl}?action=checkStatus`;
     
-    showMessage("Checking form availability...", "info");
-    
     const response = await fetch(statusUrl);
     const status = await response.json();
     
@@ -49,14 +47,14 @@ async function checkFormStatus() {
       return false;
     }
     
-    // Form is open, hide the loading message
-    messageDiv.style.display = 'none';
+    // Form is open, show it with fade-in
+    form.classList.add('form-ready');
     return true;
     
   } catch (err) {
     console.error("Error checking form status:", err);
-    messageDiv.style.display = 'none';
-    // Allow form to load if status check fails (fail open)
+    // Show form on error
+    form.classList.add('form-ready');
     return true;
   }
 }
