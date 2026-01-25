@@ -66,20 +66,31 @@ function attachEventListeners() {
 function updateRoleOptions() {
   const years = parseInt(expYears.value) || 0;
   const months = parseInt(expMonths.value) || 0;
-  const totalMonths = (years * 12) + months;
+  
+  // Convert total experience to decimal years for comparison
+  const totalYears = years + (months / 12);
 
   roleSelect.innerHTML = '<option value="">-- Select a role --</option>';
 
-  if (totalMonths === 0 && years === 0) {
+  if (totalYears === 0) {
     roleSelect.disabled = true;
     roleHelp.textContent = "Please select your experience first";
     roleHelp.className = "help-text";
     return;
   }
 
-  const eligibleRoles = rolesData.filter(
-    role => totalMonths >= role.minExperienceMonths && totalMonths <= role.maxExperienceMonths
-  );
+  const eligibleRoles = rolesData.filter(role => {
+    const minYears = role.minExperienceYears;
+    const maxYears = role.maxExperienceYears;
+    
+    // If maxYears is 0, it means "X+ years" (no upper limit)
+    if (maxYears === 0) {
+      return totalYears >= minYears;
+    }
+    
+    // Otherwise, check if experience is within range
+    return totalYears >= minYears && totalYears <= maxYears;
+  });
 
   if (eligibleRoles.length === 0) {
     roleSelect.disabled = true;
@@ -90,9 +101,14 @@ function updateRoleOptions() {
     eligibleRoles.forEach(role => {
       const opt = document.createElement("option");
       opt.value = role.name;
-      const minYears = Math.floor(role.minExperienceMonths / 12);
-      const maxYears = Math.floor(role.maxExperienceMonths / 12);
-      opt.textContent = `${role.name} (${minYears}-${maxYears} years)`;
+      
+      // Format the display text based on whether there's an upper limit
+      if (role.maxExperienceYears === 0) {
+        opt.textContent = `${role.name} (${role.minExperienceYears}+ years)`;
+      } else {
+        opt.textContent = `${role.name} (${role.minExperienceYears}-${role.maxExperienceYears} years)`;
+      }
+      
       roleSelect.appendChild(opt);
     });
     roleHelp.textContent = `✅ ${eligibleRoles.length} role(s) available`;
