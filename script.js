@@ -1,234 +1,246 @@
-console.log("✅ Referral Portal Script Loaded");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Referral Portal - CyberArk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@100&family=Inconsolata:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>Employee Referral Portal</h1>
+  </header>
 
-const ROLES_JSON_URL = "./roles.json";
-const POSTAL_API_URL = "https://api.postalpincode.in/pincode/";
+  <div class="container">
+    <form 
+      id="referralForm"
+      target="hidden_iframe"
+      action="https://script.google.com/macros/s/AKfycbzyaDbiQAj1cKf2Dg9IUPIGMBoZOpB3aD9gHzr4Byr4vGvN9KqDpLmQqb8mMFROj2pzMA/exec"
+      method="POST"
+      enctype="application/x-www-form-urlencoded"
+    >
+      <!-- Hidden fields for base64 data -->
+      <input type="hidden" name="resumeBase64" id="resumeBase64" />
+      <input type="hidden" name="resumeName" id="resumeName" />
+      <input type="hidden" name="resumeType" id="resumeType" />
+      <input type="hidden" name="fullName" id="fullName" />
+      <input type="hidden" name="experienceDisplay" id="experienceDisplay" />
+      <input type="hidden" name="phone" id="phoneHidden" />
 
-let rolesData = [];
+      <!-- Personal Information Section -->
+      <section class="form-section">
+        <h2 class="section-title">Personal Information</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="middleName">Middle Name</label>
+            <input type="text" id="middleName" name="middleName" />
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" required />
+          </div>
+        </div>
 
-const form = document.getElementById("referralForm");
-const expYears = document.getElementById("expYears");
-const expMonths = document.getElementById("expMonths");
-const roleSelect = document.getElementById("role");
-const roleHelp = document.getElementById("roleHelp");
-const postalCodeInput = document.getElementById("postalCode");
-const cityInput = document.getElementById("city");
-const postalHelp = document.getElementById("postalHelp");
-const linkedinInput = document.getElementById("linkedinUrl");
-const linkedinHelp = document.getElementById("linkedinHelp");
-const resumeFileInput = document.getElementById("resumeFile");
-const messageDiv = document.getElementById("message");
-const submitBtn = document.getElementById("submitBtn");
-const successModal = document.getElementById("successModal");
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          
+          <div class="form-group">
+            <label for="phoneInput">Phone Number <span class="required">*</span></label>
+            <div class="phone-input">
+              <span class="country-code">+91</span>
+              <input 
+                type="tel" 
+                id="phoneInput"
+                placeholder="9876543210"
+                pattern="[6-9][0-9]{9}"
+                maxlength="10"
+                required 
+              />
+            </div>
+            <small class="help-text">10-digit mobile number</small>
+          </div>
+        </div>
 
-document.addEventListener("DOMContentLoaded", async () => {
-  populateExperienceDropdowns();
-  await loadRoles();
-  attachEventListeners();
-});
+        <div class="info-note">
+          <strong>📍 Location Requirement:</strong> Due to company policy, candidates must be currently located in India. If you are an Indian citizen working abroad, you must have at least 1-2 years of relevant experience in India after returning to be eligible for consideration.
+        </div>
 
-function populateExperienceDropdowns() {
-  for (let i = 0; i <= 30; i++) {
-    const opt = document.createElement("option");
-    opt.value = i;
-    opt.textContent = `${i} ${i === 1 ? 'Year' : 'Years'}`;
-    expYears.appendChild(opt);
-  }
+        <div class="form-row">
+          <div class="form-group">
+            <label for="postalCode">Postal Code <span class="required">*</span></label>
+            <input 
+              type="text" 
+              id="postalCode" 
+              name="postalCode" 
+              placeholder="560001"
+              pattern="[1-9][0-9]{5}"
+              maxlength="6"
+              required 
+            />
+            <small id="postalHelp" class="help-text">Enter 6-digit PIN code</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="city">City <span class="required">*</span></label>
+            <input 
+              type="text" 
+              id="city" 
+              name="city" 
+              readonly 
+              placeholder="Auto-filled from postal code"
+              required 
+            />
+          </div>
+        </div>
+      </section>
 
-  for (let i = 0; i <= 11; i++) {
-    const opt = document.createElement("option");
-    opt.value = i;
-    opt.textContent = `${i} ${i === 1 ? 'Month' : 'Months'}`;
-    expMonths.appendChild(opt);
-  }
-}
+      <!-- Professional Information Section -->
+      <section class="form-section">
+        <h2 class="section-title">Professional Information</h2>
 
-async function loadRoles() {
-  try {
-    const response = await fetch(ROLES_JSON_URL);
-    if (!response.ok) throw new Error("Failed to load roles");
-    const data = await response.json();
-    rolesData = data.roles;
-    console.log("✅ Roles loaded:", rolesData);
-  } catch (err) {
-    console.error("❌ Error loading roles:", err);
-    showMessage("Failed to load role data. Please refresh the page.", "error");
-  }
-}
+        <div class="info-note">
+          <strong>📄 Job Requirements:</strong> Please carefully review the <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" rel="noopener">job descriptions and experience requirements</a> before selecting a role. You must meet the stated experience criteria. Requests made in the comments section will not be entertained.
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="expYears">Total Relevant Experience <span class="required">*</span></label>
+            <div class="experience-input">
+              <select id="expYears" required>
+                <option value="">Years</option>
+              </select>
+              <select id="expMonths" required>
+                <option value="">Months</option>
+              </select>
+            </div>
+            <small id="expHelp" class="help-text">Select years and months</small>
+          </div>
+          
+          <div class="form-group">
+            <label for="role">Job Role <span class="required">*</span></label>
+            <select id="role" name="role" required disabled>
+              <option value="">Select experience first</option>
+            </select>
+            <small id="roleHelp" class="help-text"></small>
+          </div>
+        </div>
 
-function attachEventListeners() {
-  expYears.addEventListener("change", updateRoleOptions);
-  expMonths.addEventListener("change", updateRoleOptions);
-  postalCodeInput.addEventListener("blur", verifyPostalCode);
-  linkedinInput.addEventListener("blur", validateLinkedIn);
-  form.addEventListener("submit", handleSubmit);
-}
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="linkedinUrl">LinkedIn Profile URL <span class="required">*</span></label>
+            <input 
+              type="url" 
+              id="linkedinUrl" 
+              name="linkedinUrl" 
+              placeholder="https://www.linkedin.com/in/your-profile"
+              required 
+            />
+            <small id="linkedinHelp" class="help-text">Must be a valid LinkedIn profile URL</small>
+          </div>
+        </div>
 
-function updateRoleOptions() {
-  const years = parseInt(expYears.value) || 0;
-  const months = parseInt(expMonths.value) || 0;
-  const totalMonths = (years * 12) + months;
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="resumeFile">Resume (PDF only) <span class="required">*</span></label>
+            <input 
+              type="file" 
+              id="resumeFile"
+              accept=".pdf" 
+              required 
+            />
+            <small class="help-text">Maximum file size: 10MB</small>
+          </div>
+        </div>
+      </section>
 
-  roleSelect.innerHTML = '<option value="">-- Select a role --</option>';
+      <!-- Employment Status Section -->
+      <section class="form-section">
+        <h2 class="section-title">Employment Status</h2>
+        
+        <div class="form-group">
+          <label>Current Employment Status <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="employmentStatus" value="Employed (not serving notice)" required />
+              <span>Employed (not serving notice)</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="employmentStatus" value="Serving notice period" />
+              <span>Serving notice period</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="employmentStatus" value="Not currently employed" />
+              <span>Not currently employed</span>
+            </label>
+          </div>
+        </div>
 
-  if (totalMonths === 0 && years === 0) {
-    roleSelect.disabled = true;
-    roleHelp.textContent = "Please select your experience first";
-    roleHelp.className = "help-text";
-    return;
-  }
+        <div class="form-group">
+          <label>Do you currently have an offer?</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="hasOffer" value="Yes" />
+              <span>Yes</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="hasOffer" value="No" />
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+      </section>
 
-  const eligibleRoles = rolesData.filter(
-    role => totalMonths >= role.minExperienceMonths && totalMonths <= role.maxExperienceMonths
-  );
+      <!-- Additional Information Section -->
+      <section class="form-section">
+        <h2 class="section-title">Additional Information</h2>
+        
+        <div class="form-group">
+          <label for="comments">Additional Comments / Notes</label>
+          <textarea 
+            id="comments" 
+            name="comments" 
+            rows="4" 
+            placeholder="Any additional information you'd like to share..."
+          ></textarea>
+        </div>
+      </section>
 
-  if (eligibleRoles.length === 0) {
-    roleSelect.disabled = true;
-    roleHelp.textContent = "❌ No roles available for this experience range";
-    roleHelp.className = "help-text error";
-  } else {
-    roleSelect.disabled = false;
-    eligibleRoles.forEach(role => {
-      const opt = document.createElement("option");
-      opt.value = role.name;
-      const minYears = Math.floor(role.minExperienceMonths / 12);
-      const maxYears = Math.floor(role.maxExperienceMonths / 12);
-      opt.textContent = `${role.name} (${minYears}-${maxYears} years)`;
-      roleSelect.appendChild(opt);
-    });
-    roleHelp.textContent = `✅ ${eligibleRoles.length} role(s) available`;
-    roleHelp.className = "help-text success";
-  }
-}
+      <!-- Message Display -->
+      <div id="message" class="message"></div>
 
-async function verifyPostalCode() {
-  const pincode = postalCodeInput.value.trim();
+      <!-- Submit Button -->
+      <button type="submit" class="btn-submit" id="submitBtn">
+        Submit Referral
+      </button>
+    </form>
+  </div>
 
-  if (!/^[1-9][0-9]{5}$/.test(pincode)) {
-    cityInput.value = "";
-    postalHelp.textContent = "❌ Invalid postal code";
-    postalHelp.className = "help-text error";
-    return;
-  }
+  <!-- Success Modal -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <div class="checkmark">✅</div>
+      <h2>Referral Submitted Successfully!</h2>
+      <p>Thank you for your referral. Our team will review the submission and get in touch soon.</p>
+      <button onclick="closeModal()" class="btn-close">Close</button>
+    </div>
+  </div>
 
-  postalHelp.textContent = "Verifying postal code...";
-  postalHelp.className = "help-text";
+  <!-- Hidden iframe to bypass CORS -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-  try {
-    const response = await fetch(`${POSTAL_API_URL}${pincode}`);
-    const data = await response.json();
-
-    if (data[0].Status === "Success" && data[0].PostOffice) {
-      const postOffice = data[0].PostOffice[0];
-      cityInput.value = postOffice.District;
-      postalHelp.textContent = `✅ ${postOffice.District}, ${postOffice.State}`;
-      postalHelp.className = "help-text success";
-    } else {
-      cityInput.value = "";
-      postalHelp.textContent = "❌ Postal code not found";
-      postalHelp.className = "help-text error";
-    }
-  } catch (err) {
-    console.error("Postal verification error:", err);
-    cityInput.value = "";
-    postalHelp.textContent = "❌ Unable to verify postal code";
-    postalHelp.className = "help-text error";
-  }
-}
-
-function validateLinkedIn() {
-  const url = linkedinInput.value.trim();
-
-  const linkedInPattern = /^https?:\/\/(www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?$/;
-
-  if (linkedInPattern.test(url)) {
-    linkedinHelp.textContent = "✅ Valid LinkedIn profile URL";
-    linkedinHelp.className = "help-text success";
-  } else {
-    linkedinHelp.textContent = "❌ Must be a valid LinkedIn profile URL";
-    linkedinHelp.className = "help-text error";
-  }
-}
-
-async function handleSubmit(e) {
-  e.preventDefault();
-
-  if (!validateForm()) return;
-
-  submitBtn.disabled = true;
-  showMessage("Processing your referral...", "info");
-
-  const firstName = document.getElementById("firstName").value.trim();
-  const middleName = document.getElementById("middleName").value.trim();
-  const lastName = document.getElementById("lastName").value.trim();
-
-  const fullName = middleName
-    ? `${firstName} ${middleName} ${lastName}`
-    : `${firstName} ${lastName}`;
-
-  const years = parseInt(expYears.value) || 0;
-  const months = parseInt(expMonths.value) || 0;
-  const experienceDisplay = `${years} years ${months} months`;
-
-  const phone = `+91${document.getElementById("phoneInput").value.trim()}`;
-
-  const resumeFile = resumeFileInput.files[0];
-  const base64 = await fileToBase64(resumeFile);
-
-  document.getElementById("fullName").value = fullName;
-  document.getElementById("experienceDisplay").value = experienceDisplay;
-  document.getElementById("phoneHidden").value = phone;
-  document.getElementById("resumeBase64").value = base64;
-  document.getElementById("resumeName").value = resumeFile.name;
-  document.getElementById("resumeType").value = resumeFile.type;
-
-  const hasOffer = document.querySelector('input[name="hasOffer"]:checked');
-  if (!hasOffer) {
-    const noOfferInput = document.createElement("input");
-    noOfferInput.type = "hidden";
-    noOfferInput.name = "hasOffer";
-    noOfferInput.value = "Not specified";
-    form.appendChild(noOfferInput);
-  }
-
-  showMessage("Submitting referral...", "info");
-
-  // ✅ FIX: Native submit (no fetch, no CORS)
-  form.submit();
-
-  successModal.style.display = "block";
-  form.reset();
-  roleSelect.innerHTML = '<option value="">Select experience first</option>';
-  roleSelect.disabled = true;
-  messageDiv.style.display = "none";
-  submitBtn.disabled = false;
-}
-
-function validateForm() {
-  if (!cityInput.value.trim()) {
-    showMessage("Please enter a valid postal code", "error");
-    return false;
-  }
-  if (!roleSelect.value) {
-    showMessage("Please select a job role", "error");
-    return false;
-  }
-  return true;
-}
-
-function showMessage(msg, type) {
-  messageDiv.textContent = msg;
-  messageDiv.className = `message ${type}`;
-  messageDiv.style.display = "block";
-}
-
-function fileToBase64(file) {
-  return new Promise(resolve => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result.split(",")[1]);
-    reader.readAsDataURL(file);
-  });
-}
-
-function closeModal() {
-  successModal.style.display = "none";
-}
+  <script src="script.js"></script>
+</body>
+</html>
