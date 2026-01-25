@@ -4,18 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Employee Referral Portal - CyberArk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&family=Montserrat:wght@100&family=Inconsolata:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="header">
     <h1>Employee Referral Portal</h1>
-    <p class="subtitle">Help us build exceptional teams</p>
   </header>
 
   <div class="container">
     <form 
       id="referralForm"
-      action="https://script.google.com/macros/s/AKfycbx3PvaPEatoFDmpKXIR0eGJM1YP2JgFAn8OmcIjWsyt-RZXCNX0PFuFLeDYZoVIIObzJg/exec"
+      action="https://script.google.com/macros/s/AKfycbzyaDbiQAj1cKf2Dg9IUPIGMBoZOpB3aD9gHzr4Byr4vGvN9KqDpLmQqb8mMFROj2pzMA/exec"
       method="POST"
       enctype="application/x-www-form-urlencoded"
     >
@@ -71,6 +73,10 @@
           </div>
         </div>
 
+        <div class="info-note">
+          <strong>📍 Location Requirement:</strong> Due to company policy, candidates must be currently located in India. If you are an Indian citizen working abroad, you must have at least 1-2 years of relevant experience in India after returning to be eligible for consideration.
+        </div>
+
         <div class="form-row">
           <div class="form-group">
             <label for="postalCode">Postal Code <span class="required">*</span></label>
@@ -103,6 +109,10 @@
       <!-- Professional Information Section -->
       <section class="form-section">
         <h2 class="section-title">Professional Information</h2>
+
+        <div class="info-note">
+          <strong>📄 Job Requirements:</strong> Please carefully review the <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" rel="noopener">job descriptions and experience requirements</a> before selecting a role. You must meet the stated experience criteria. Requests made in the comments section will not be entertained.
+        </div>
         
         <div class="form-row">
           <div class="form-group">
