@@ -17,7 +17,6 @@
   <div class="container">
     <form 
       id="referralForm"
-      <!-- 🔑 CORS FIX #1 -->
       target="hidden_iframe"
       action="https://script.google.com/macros/s/AKfycbzyaDbiQAj1cKf2Dg9IUPIGMBoZOpB3aD9gHzr4Byr4vGvN9KqDpLmQqb8mMFROj2pzMA/exec"
       method="POST"
@@ -113,7 +112,7 @@
         <h2 class="section-title">Professional Information</h2>
 
         <div class="info-note">
-          <strong>📄 Job Requirements:</strong> Please carefully review the <a href="https://drive.google.com/drive/folders/1wwKzneVh8rRCRsAfzJm68GaGs9DBeGPL?usp=drive_link" target="_blank" rel="noopener">job descriptions and experience requirements</a> before selecting a role. You must meet the stated experience criteria. Requests made in the comments section will not be entertained.
+          <strong>📄 Job Requirements:</strong> Please carefully review the <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" rel="noopener">job descriptions and experience requirements</a> before selecting a role. You must meet the stated experience criteria. Requests made in the comments section will not be entertained.
         </div>
         
         <div class="form-row">
@@ -239,8 +238,8 @@
     </div>
   </div>
 
-  <!-- 🔑 CORS FIX #2 -->
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
+  <!-- Hidden iframe to bypass CORS -->
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
   <script src="script.js"></script>
 </body>
