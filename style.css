@@ -572,3 +572,76 @@ body {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+
+/* ===================================
+   Form Closed State
+   =================================== */
+
+.md-form-closed {
+  background: var(--md-sys-color-surface-container-high);
+  border-radius: var(--md-sys-shape-corner-large);
+  box-shadow: var(--md-sys-elevation-2);
+  padding: 64px 24px;
+  text-align: center;
+  margin: 24px 0;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-form-closed-content {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.md-form-closed-content .material-symbols-outlined {
+  font-size: 80px;
+  color: var(--md-sys-color-error);
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+  opacity: 0.9;
+}
+
+.md-form-closed-content h2 {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0;
+  color: var(--md-sys-color-on-surface);
+  margin: 0;
+}
+
+.md-form-closed-content p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: var(--md-sys-color-on-surface-variant);
+  margin: 0;
+  max-width: 500px;
+}
+
+@media (max-width: 600px) {
+  .md-form-closed {
+    padding: 40px 16px;
+    min-height: 300px;
+  }
+  
+  .md-form-closed-content .material-symbols-outlined {
+    font-size: 64px;
+  }
+  
+  .md-form-closed-content h2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  
+  .md-form-closed-content p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
