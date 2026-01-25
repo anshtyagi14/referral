@@ -218,21 +218,13 @@ async function handleSubmit(e) {
 
     showMessage("Submitting referral...", "info");
 
-    // Create hidden iframe for submission
-    let iframe = document.getElementById('hidden_iframe');
-    if (!iframe) {
-      iframe = document.createElement('iframe');
-      iframe.id = 'hidden_iframe';
-      iframe.name = 'hidden_iframe';
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
-    }
-
-    form.target = 'hidden_iframe';
-    form.submit();
-
-    // Show success modal after a delay
-    setTimeout(() => {
+    // Submit using fetch with FormData
+    const formData = new FormData(form);
+    
+    fetch(form.action, {
+      method: 'POST',
+      body: formData
+    }).then(() => {
       successModal.style.display = 'block';
       form.reset();
       cityInput.value = "";
@@ -240,7 +232,11 @@ async function handleSubmit(e) {
       roleSelect.disabled = true;
       messageDiv.style.display = 'none';
       submitBtn.disabled = false;
-    }, 1500);
+    }).catch(err => {
+      console.error("Submission error:", err);
+      showMessage("An error occurred. Please try again.", "error");
+      submitBtn.disabled = false;
+    });
 
   } catch (err) {
     console.error("Submission error:", err);
@@ -301,7 +297,6 @@ function closeModal() {
   successModal.style.display = 'none';
 }
 
-// Close modal when clicking outside
 window.onclick = function(event) {
   if (event.target == successModal) {
     closeModal();
