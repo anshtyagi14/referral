@@ -21,10 +21,64 @@ const submitBtn = document.getElementById("submitBtn");
 const successModal = document.getElementById("successModal");
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Check if form is open
+  const isFormOpen = await checkFormStatus();
+  
+  if (!isFormOpen) {
+    return; // Form is closed, stop initialization
+  }
+  
+  // Form is open, continue normal initialization
   populateExperienceDropdowns();
   await loadRoles();
   attachEventListeners();
 });
+
+async function checkFormStatus() {
+  try {
+    const scriptUrl = form.action;
+    const statusUrl = `${scriptUrl}?action=checkStatus`;
+    
+    showMessage("Checking form availability...", "info");
+    
+    const response = await fetch(statusUrl);
+    const status = await response.json();
+    
+    if (!status.isOpen) {
+      showFormClosed(status.closedTitle, status.closedMessage);
+      return false;
+    }
+    
+    // Form is open, hide the loading message
+    messageDiv.style.display = 'none';
+    return true;
+    
+  } catch (err) {
+    console.error("Error checking form status:", err);
+    messageDiv.style.display = 'none';
+    // Allow form to load if status check fails (fail open)
+    return true;
+  }
+}
+
+function showFormClosed(title, message) {
+  // Hide the entire form
+  form.style.display = 'none';
+  
+  // Create closed message card
+  const closedDiv = document.createElement('div');
+  closedDiv.className = 'md-form-closed';
+  closedDiv.innerHTML = `
+    <div class="md-form-closed-content">
+      <span class="material-symbols-outlined">lock</span>
+      <h2>${title}</h2>
+      <p>${message}</p>
+    </div>
+  `;
+  
+  // Insert before the form
+  form.parentElement.insertBefore(closedDiv, form);
+}
 
 function populateExperienceDropdowns() {
   for (let i = 0; i <= 30; i++) {
@@ -75,7 +129,7 @@ function updateRoleOptions() {
   if (totalYears === 0) {
     roleSelect.disabled = true;
     roleHelp.textContent = "Please select your experience first";
-    roleHelp.className = "help-text";
+    roleHelp.className = "md-supporting-text";
     return;
   }
 
@@ -95,7 +149,7 @@ function updateRoleOptions() {
   if (eligibleRoles.length === 0) {
     roleSelect.disabled = true;
     roleHelp.textContent = "❌ No roles available for this experience range";
-    roleHelp.className = "help-text error";
+    roleHelp.className = "md-supporting-text error";
   } else {
     roleSelect.disabled = false;
     eligibleRoles.forEach(role => {
@@ -112,7 +166,7 @@ function updateRoleOptions() {
       roleSelect.appendChild(opt);
     });
     roleHelp.textContent = `✅ ${eligibleRoles.length} role(s) available`;
-    roleHelp.className = "help-text success";
+    roleHelp.className = "md-supporting-text success";
   }
 }
 
@@ -122,12 +176,12 @@ async function verifyPostalCode() {
   if (!/^[1-9][0-9]{5}$/.test(pincode)) {
     cityInput.value = "";
     postalHelp.textContent = "❌ Invalid postal code";
-    postalHelp.className = "help-text error";
+    postalHelp.className = "md-supporting-text error";
     return;
   }
 
   postalHelp.textContent = "Verifying postal code...";
-  postalHelp.className = "help-text";
+  postalHelp.className = "md-supporting-text";
 
   try {
     const response = await fetch(`${POSTAL_API_URL}${pincode}`);
@@ -137,17 +191,17 @@ async function verifyPostalCode() {
       const postOffice = data[0].PostOffice[0];
       cityInput.value = postOffice.District;
       postalHelp.textContent = `✅ ${postOffice.District}, ${postOffice.State}`;
-      postalHelp.className = "help-text success";
+      postalHelp.className = "md-supporting-text success";
     } else {
       cityInput.value = "";
       postalHelp.textContent = "❌ Postal code not found";
-      postalHelp.className = "help-text error";
+      postalHelp.className = "md-supporting-text error";
     }
   } catch (err) {
     console.error("Postal verification error:", err);
     cityInput.value = "";
     postalHelp.textContent = "❌ Unable to verify postal code";
-    postalHelp.className = "help-text error";
+    postalHelp.className = "md-supporting-text error";
   }
 }
 
@@ -156,7 +210,7 @@ function validateLinkedIn() {
 
   if (!url) {
     linkedinHelp.textContent = "LinkedIn URL is required";
-    linkedinHelp.className = "help-text";
+    linkedinHelp.className = "md-supporting-text";
     return;
   }
 
@@ -164,10 +218,10 @@ function validateLinkedIn() {
 
   if (linkedInPattern.test(url)) {
     linkedinHelp.textContent = "✅ Valid LinkedIn profile URL";
-    linkedinHelp.className = "help-text success";
+    linkedinHelp.className = "md-supporting-text success";
   } else {
     linkedinHelp.textContent = "❌ Must be a valid LinkedIn profile URL (e.g., https://www.linkedin.com/in/username)";
-    linkedinHelp.className = "help-text error";
+    linkedinHelp.className = "md-supporting-text error";
   }
 }
 
@@ -266,9 +320,9 @@ async function handleSubmit(e) {
       roleSelect.disabled = true;
       roleHelp.textContent = "";
       linkedinHelp.textContent = "Must be a valid LinkedIn profile URL";
-      linkedinHelp.className = "help-text";
+      linkedinHelp.className = "md-supporting-text";
       postalHelp.textContent = "Enter 6-digit PIN code";
-      postalHelp.className = "help-text";
+      postalHelp.className = "md-supporting-text";
       messageDiv.style.display = 'none';
     } else {
       showMessage("Submission failed: " + result.message, "error");
@@ -316,7 +370,7 @@ function validateForm() {
 
 function showMessage(msg, type) {
   messageDiv.textContent = msg;
-  messageDiv.className = `message ${type}`;
+  messageDiv.className = `md-message ${type}`;
   messageDiv.style.display = "block";
   messageDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
