@@ -1,29 +1,9 @@
 {
   "roles": [
-    {
-      "name": "SRE",
-      "minExperienceMonths": 36,
-      "maxExperienceMonths": 120
-    },
-    {
-      "name": "DevOps Engineer",
-      "minExperienceMonths": 24,
-      "maxExperienceMonths": 84
-    },
-    {
-      "name": "Backend Engineer",
-      "minExperienceMonths": 12,
-      "maxExperienceMonths": 72
-    },
-    {
-      "name": "Frontend Engineer",
-      "minExperienceMonths": 12,
-      "maxExperienceMonths": 72
-    },
-    {
-      "name": "Intern",
-      "minExperienceMonths": 0,
-      "maxExperienceMonths": 12
-    }
+    { "name": "SRE", "minExperienceMonths": 36, "maxExperienceMonths": 120 },
+    { "name": "DevOps Engineer", "minExperienceMonths": 24, "maxExperienceMonths": 84 },
+    { "name": "Backend Engineer", "minExperienceMonths": 12, "maxExperienceMonths": 72 },
+    { "name": "Frontend Engineer", "minExperienceMonths": 12, "maxExperienceMonths": 72 },
+    { "name": "Intern", "minExperienceMonths": 0, "maxExperienceMonths": 12 }
   ]
 }
