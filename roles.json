@@ -1,9 +1,38 @@
 {
   "roles": [
-    { "name": "SRE", "minExperienceYears": 3, "maxExperienceYears": 10 },
-    { "name": "DevOps Engineer", "minExperienceYears": 2, "maxExperienceYears": 7 },
-    { "name": "Backend Engineer", "minExperienceYears": 1, "maxExperienceYears": 6 },
-    { "name": "Frontend Engineer", "minExperienceYears": 1, "maxExperienceYears": 6 },
-    { "name": "Architect", "minExperienceYears": 12, "maxExperienceYears": 0 }
+    { "name": "Business Development Representative (BDR) (POS3630_2)", "minExperienceYears": 3, "maxExperienceYears": 4 },
+    { "name": "Principal Account Executive - India (GOVT) (POS5175_1)", "minExperienceYears": 10, "maxExperienceYears": 0 },
+    { "name": "Senior Solutions Engineer - APJ (Machine Identity) (POS5051_1)", "minExperienceYears": 8, "maxExperienceYears": 10 },
+    { "name": "Senior Software Engineer (.NET, AWS) (POS4969_2)", "minExperienceYears": 5, "maxExperienceYears": 0 },
+    { "name": "Senior Software Engineer - R&D (Python) (POS2906_1)", "minExperienceYears": 6, "maxExperienceYears": 0 },
+    { "name": "Security Services Architect - India (POS2516_4)", "minExperienceYears": 12, "maxExperienceYears": 0 },
+    { "name": "Application Engineer (POS4540_1)", "minExperienceYears": 3, "maxExperienceYears": 0 },
+    { "name": "Staff Software Engineer (POS3163_5)", "minExperienceYears": 8, "maxExperienceYears": 0 },
+    { "name": "Solutions Engineer - India (POS5177_1)", "minExperienceYears": 8, "maxExperienceYears": 0 },
+    { "name": "Software Engineer (POS1911_2)", "minExperienceYears": 3, "maxExperienceYears": 0 },
+    { "name": "GTM Operations Associate (POS3339_2)", "minExperienceYears": 2, "maxExperienceYears": 0 },
+    { "name": "Senior Account Executive - India (BFSI) (POS5056_1)", "minExperienceYears": 8, "maxExperienceYears": 0 },
+    { "name": "Senior Account Executive - India (ITE/ITES) (POS2998_5)", "minExperienceYears": 6, "maxExperienceYears": 0 },
+    { "name": "Senior Software Engineer (POS5078_1)", "minExperienceYears": 5, "maxExperienceYears": 0 },
+    { "name": "Software Engineer (POS5081_1)", "minExperienceYears": 3, "maxExperienceYears": 0 },
+    { "name": "Manager, Engineering (POS5076_1)", "minExperienceYears": 15, "maxExperienceYears": 0 },
+    { "name": "Senior Software Engineer (C++, Win32) (POS2806_2)", "minExperienceYears": 6, "maxExperienceYears": 0 },
+    { "name": "Software Engineer - (C++ and Win32) (POS3508_2)", "minExperienceYears": 3, "maxExperienceYears": 5 },
+    { "name": "Senior Product Owner (POS2861_2)", "minExperienceYears": 5, "maxExperienceYears": 8 },
+    { "name": "Senior SDET (POS5083_1)", "minExperienceYears": 4, "maxExperienceYears": 8 },
+    { "name": "Senior Software Engineer - Java Full Stack Engineer (POS4964_1)", "minExperienceYears": 5, "maxExperienceYears": 0 },
+    { "name": "Senior Software Engineer (POS5071_1)", "minExperienceYears": 5, "maxExperienceYears": 0 },
+    { "name": "Senior SDET (POS5085_1)", "minExperienceYears": 5, "maxExperienceYears": 8 },
+    { "name": "Software Engineer (POS4981_1)", "minExperienceYears": 3, "maxExperienceYears": 5 },
+    { "name": "Solutions Engineer - India (Delhi-based) (POS5052_1)", "minExperienceYears": 8, "maxExperienceYears": 0 },
+    { "name": "Senior Software Engineer - Full stack (.Net primary) (POS4975_1)", "minExperienceYears": 6, "maxExperienceYears": 9 },
+    { "name": "Senior Software Architect - Platform Service (POS3462_4)", "minExperienceYears": 10, "maxExperienceYears": 0 },
+    { "name": "DevOps Platform Architect (POS3704_2)", "minExperienceYears": 8, "maxExperienceYears": 10 },
+    { "name": "Software Architect (.NET, AWS) (POS4754_1)", "minExperienceYears": 8, "maxExperienceYears": 10 },
+    { "name": "Staff Software Engineer - Python (POS2826_2)", "minExperienceYears": 7, "maxExperienceYears": 10 },
+    { "name": "Staff Software Engineer (POS2807_2)", "minExperienceYears": 10, "maxExperienceYears": 0 },
+    { "name": "Team Lead, Engineering (POS2821_2)", "minExperienceYears": 10, "maxExperienceYears": 0 },
+    { "name": "Team Leader, Engineering (POS4906_3)", "minExperienceYears": 10, "maxExperienceYears": 0 }
   ]
 }
+
