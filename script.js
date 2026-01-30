@@ -187,7 +187,7 @@ async function verifyPostalCode() {
 
     if (data[0].Status === "Success" && data[0].PostOffice) {
       const postOffice = data[0].PostOffice[0];
-      cityInput.value = postOffice.District;
+      cityInput.value = `${postOffice.District}, ${postOffice.State}`;
       postalHelp.textContent = `✅ ${postOffice.District}, ${postOffice.State}`;
       postalHelp.className = "md-supporting-text success";
     } else {
@@ -195,6 +195,7 @@ async function verifyPostalCode() {
       postalHelp.textContent = "❌ Postal code not found";
       postalHelp.className = "md-supporting-text error";
     }
+    
   } catch (err) {
     console.error("Postal verification error:", err);
     cityInput.value = "";
